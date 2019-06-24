@@ -8,6 +8,11 @@ class CQTest implements CommonQ{
         putloc = getloc =0;
     }
 
+    @Override
+    public void reset() {
+
+    }
+
     public void put(char ch) {
         /*очередь считается полной, если индекс putloc на единицу
          * меньше инедкса getloc или если индекс putloc указывает
