@@ -1,5 +1,8 @@
 package pack8ch;
-class CQTest implements CommonQ{
+
+import pack8ch.qpack.ICharQ;
+
+class CQTest implements ICharQ {
     private char[] q;
     private int putloc, getloc;
 
@@ -48,7 +51,7 @@ class CQTest implements CommonQ{
 public class CircularQTest {
     public static void main(String[] args) {
         CQTest qt = new CQTest(10);
-        CommonQ iQ = qt;
+        ICharQ iQ = qt;
 
 
         for (int i=0; i<10; i++) {

@@ -1,6 +1,6 @@
-package pack7ch;
+package pack7ch.VehiclePack;
 
-class VehicleT {
+class VehicleT implements IVehicle{
     private int passengers;
     private int fuelcup;
     private int mpg;
@@ -22,7 +22,7 @@ class VehicleT {
         return (double) distance / mpg;
     }
 
-    void showInfo() {
+    public void showInfo() {
         System.out.println( "For overcame " + distance +
                 " miles needed " + fuelneeded() +
                 " gallons." );
@@ -68,7 +68,7 @@ class Truck extends VehicleT{
         cargocap = c;
     }
 
-    void showInfo() {
+    public void showInfo() {
         System.out.println(getName() + " can transport " +
                 cargocap + " pounds.");
         super.showInfo();
@@ -87,7 +87,7 @@ class OffRoad extends VehicleT{
         groudClearance = gC;
     }
 
-    void showInfo() {
+    public void showInfo() {
         System.out.println(getName() + " have a " +
                 groudClearance + " inches.");
         super.showInfo();

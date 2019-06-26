@@ -1,6 +1,6 @@
-package pack8ch;
+package pack8ch.qpack;
 
-public interface CommonQ {
+public interface ICharQ {
 
     void put(char ch);
 

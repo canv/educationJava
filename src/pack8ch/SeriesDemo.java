@@ -15,6 +15,7 @@ class ByTwos implements Series {
         prev = val;
         val += 2;
         return val;
+
     }
 
     @Override
@@ -88,15 +89,12 @@ public class SeriesDemo {
             ob = threeOb;
             System.out.println("ByThree next value: " + ob.getNext());
         }
-//        !does not work properly, will fix after sleep!
 
-//        ob = twoOb;
-//        System.out.println("\n\nDemo of method getNextArray for twoOb: ");
-//
-//        for (int arID = 0; arID < ob.getNextArray(5).length; arID++) {
-//            int x;
-//            x = ob.getNextArray(5)[arID];
-//            System.out.print(x + " ");
-//        }
+        twoOb.reset();
+        System.out.println("\n\nDemo of method getNextArray for twoOb: ");
+
+        int[] q = twoOb.getNextArray(5);
+        for (int val: q) {System.out.print(val + " ");
+        }
     }
 }
