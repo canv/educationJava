@@ -5,16 +5,16 @@ class SpaseDel {
     static String noSpace(final String x) {
         System.out.println(x.length());
 
-        String fin = "";
-        char s = ' ';
-
-        for (int i = 0; i < x.length(); i++) {
-            if (s != x.charAt(i)) fin += x.charAt(i);
-        }
-        return fin;
+//        String fin = "";
+//        char s = ' ';
+//
+//        for (int i = 0; i < x.length(); i++) {
+//            if (s != x.charAt(i)) fin += x.charAt(i);
+//        }
+//        return fin;
 
         //need to learn java library :)
-        //return x.replace(" ", "");
+        return x.replace(" ", "");
     }
 
 }
