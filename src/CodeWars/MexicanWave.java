@@ -1,41 +1,38 @@
+// http://qaru.site/questions/187536/checking-letter-case-upperlower-within-a-string-in-java
+// http://qaru.site/questions/109210/how-do-i-replace-a-character-in-a-string-in-java
+
 package CodeWars;
 
 public class MexicanWave {
     public static void main(String[] args) {
 
-        String test1 = "hello";
-        String test2 = "code wars";
-        String test3 = "";
-        String test4 = "two words";
-        String test5 = " gap ";
-
-        for (String x : MexicanWave.wave(test1)) {
+        for (String x : MexicanWave.wave("hello")) {
             System.out.println(x);
         }
-        for (String x : MexicanWave.wave(test2)) {
+        for (String x : MexicanWave.wave("code wars")) {
             System.out.println(x);
         }
-        for (String x : MexicanWave.wave(test3)) {
+        for (String x : MexicanWave.wave("")) {
             System.out.println(x);
         }
-        for (String x : MexicanWave.wave(test4)) {
+        for (String x : MexicanWave.wave("two words")) {
             System.out.println(x);
         }
-        for (String x : MexicanWave.wave(test5)) {
+        for (String x : MexicanWave.wave(" gap ")) {
             System.out.println(x);
         }
     }
 
     private static String[] wave(String str) {
 
-        int resultLength = 0;
+        int finalLength = 0;
         for (int j = 0; j < str.length(); j++) {
-            if (str.charAt(j) != ' ') resultLength++;
+            if (str.charAt(j) != ' ') finalLength++;
         }
-        String[] withoutSpaces = new String[resultLength];
+        String[] withoutSpaces = new String[finalLength];
+
 
         String[] r = new String[str.length()];
-
         int count = 0;
 
 
@@ -55,5 +52,34 @@ public class MexicanWave {
             }
         }
         return withoutSpaces;
+
+
+//        //codewars version
+//        String[] wave = new String[str.length()];
+//
+//        for (int i = 0; i < str.length(); i++) {
+//            if (Character.isLetter(str.charAt(i))) {
+//                wave[i] = str.substring(0, i) + Character.toUpperCase(str.charAt(i)) + str.substring((i + 1));
+//            }
+//        }
+//
+//        int spaceCount = 0;
+//        for (String x : wave) {
+//            if (x == null) {
+//                spaceCount++;
+//            }
+//        }
+//
+//        String[] RealWaves = new String[wave.length - spaceCount];
+//
+//        int k = 0;
+//        for (String j : wave) {
+//            if (j != null) {
+//                RealWaves[k] = j;
+//                k++;
+//            }
+//        }
+//
+//        return (RealWaves);
     }
 }
