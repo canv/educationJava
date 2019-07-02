@@ -10,10 +10,16 @@ class Stack0 {
         index = 0;
     }
 
-    Stack0(char[] makeArr) throws StackFullException {
+    Stack0(char[] makeArr) {
         arrKeep = new char[makeArr.length];
 
-        for (char c : makeArr) push(c);
+        for (char c : makeArr) {
+            try {
+                push(c);
+            }catch (StackFullException exc) {
+                System.out.println(exc);
+            }
+        }
     }
 
     Stack0(Stack0 copyThat) {
@@ -30,62 +36,61 @@ class Stack0 {
         arrKeep[index] = value;
         index++;
     }
-    private void errPush(char value) {
-        arrKeep[index] = value;
-        index++;
-    }
 
-    private char pop() {
+    private char pop() throws StackEmptyException {
         if (index == 0) {
-            System.out.println("-- Stack is empty");
-            return (char) 0;
+           throw new StackEmptyException();
         }
         index--;
         return arrKeep[index];
     }
 
-    void showContent() {
+    void showContent() throws StackEmptyException {
         for (int i = 0; i < arrKeep.length; i++) {
             System.out.print(pop());
         }
         System.out.println();
     }
 
-    void fillArray() throws StackFullException {
-        for (int i = 0; i < arrKeep.length; i++) {
-            push((char) ('A' + i));
+    void fillArray() {
+        try {
+            for (int i = 0; i < arrKeep.length; i++) {
+                push((char) ('A' + i));
+            }
+        } catch (StackFullException exc) {
+            exc.printStackTrace();
         }
     }
 
-    void errFillArray() throws StackFullException {
-        for (int i = 0; i < arrKeep.length + 1; i++) {
-            push((char) ('A' + i));
+    void errFillArray() {
+        try {
+            for (int i = 0; i < arrKeep.length+1; i++) {
+                push((char) ('A' + i));
+            }
+        } catch (StackFullException exc) {
+            exc.printStackTrace();
         }
     }
 }
 
 public class StackDemo {
-    public static void main(String[] args) {
-
-//        Stack0 stk1 = new Stack0(10);
-//        stk1.fillArray();
-//
-//        char[] name = {'T', 'o', 'm'};
-//        Stack0 stk2 = new Stack0(name);
-//
-//        Stack0 stk3 = new Stack0(stk1);
-//
-//        stk1.showContent();
-//        stk2.showContent();
-//        stk3.showContent();
+    public static void main(String[] args) throws StackFullException, StackEmptyException {
 
         Stack0 stkTest1 = new Stack0(10);
-        try {
-            stkTest1.errFillArray();
-        } catch (StackFullException e) {
-            e.printStackTrace();
-        }finally {
-            System.out.println("need fix it");
-        }
+        stkTest1.errFillArray();
+
+
+        Stack0 stk1 = new Stack0(10);
+        stk1.fillArray();
+
+        char[] name = {'T', 'o', 'm'};
+        Stack0 stk2 = new Stack0(name);
+
+        Stack0 stk3 = new Stack0(stk1);
+
+        stk1.showContent();
+        stk2.showContent();
+        stk3.showContent();
+
     }
 }
