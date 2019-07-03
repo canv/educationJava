@@ -42,6 +42,8 @@ public class PrinterTest {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i)>'m') counter++;
         }
+//        //codewars version
+//        return s.replaceAll("[a-m]", "").length() + "/" + s.length();
         return counter + "/" + s.length();
     }
 }
