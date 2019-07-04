@@ -6,59 +6,38 @@
 //
 //        The tests contain some very huge arrays, so think about performance.
 
+// Timed Out (16000 ms)
+// may be use recursion?
+
 package CodeWars;
 
 public class FindTheUniqueNumber {
     public static void main(String[] args) {
-        double[] x1 = {1, 2, 1};
-        double[] x2 = {1, 1, 1, 2, 1, 1};
-        double[] x3 = {2, 1, 1, 1, 1, 1, 1};
+        double[] x1 = {2, 1, 1, 1, 1, 1, 1};
+        double[] x2 = {1, 2, 1};
+        double[] x3 = {1, 1, 1, 2, 1, 1};
         double[] x4 = {1, 1, 1, 1, 2};
+        double[] x5 = {1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 2};
 
         System.out.println(findUniq(x1));
         System.out.println(findUniq(x2));
         System.out.println(findUniq(x3));
         System.out.println(findUniq(x4));
+        System.out.println(findUniq(x5));
     }
 
-    private static double findUniq(double arr[]) {
-        double a = arr[0];
-        int aCount = 0;
-        double b = arr[1];
-        int bCount = 0;
-        double outsider = 0;
-        int ontCount = 0;
+    private static double findUniq(double[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int z = 1; z < arr.length; z++) {
+        int tt;
+        for (double value : arr) {
+            tt = 0;
+            for (double v : arr) {
 
-                if ((arr[i] == arr[z])) {
-                    outsider = arr[i];
-                }
-                if (arr[i] != arr[z]) {
-                    if (arr[i] == outsider) return arr[z];
-                    else return arr[i];
-                }
-
+                if (value != v) tt++;
+                if (tt == 2) return value;
             }
         }
-
-        return arr[0];
-
-//                if (arr[i] != arr[z]) {
-//                    a = arr[i];
-//                    aCount++;
-//                    b = arr[z];
-//                    bCount++;
-//                }
-
-
-
-//                if (arr[i] == b) {
-//                    bCount++;
-//                }
-
-//                if (bCount > 1) return a;
-//                if (aCount > 1) return b;
+        return 404;
     }
 }
