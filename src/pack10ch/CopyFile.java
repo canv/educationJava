@@ -3,7 +3,7 @@ package pack10ch;
 import java.io.*;
 
 public class CopyFile {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         int charIndex;
 
@@ -14,7 +14,7 @@ public class CopyFile {
 
 
         try (FileInputStream fileIn = new FileInputStream(args[0]);
-             FileOutputStream fileOut = new FileOutputStream(args[1])) {
+             FileOutputStream fileOut = new FileOutputStream(args[1],true)) {
             do {
                 charIndex = fileIn.read();
                 if (charIndex != -1) fileOut.write(charIndex);
