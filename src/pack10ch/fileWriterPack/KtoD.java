@@ -1,4 +1,4 @@
-package pack10ch.fileReaderPack;
+package pack10ch.fileWriterPack;
 
 import java.io.*;
 
@@ -32,6 +32,6 @@ public class KtoD {
 
     private static String myAddress() {
         return "C:\\Users\\Admin\\IdeaProjects" +
-                "\\myfirstproj\\src\\pack10ch\\fileReaderPack\\";
+                "\\myfirstproj\\src\\pack10ch\\fileWriterPack\\";
     }
 }
