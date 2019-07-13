@@ -1,0 +1,89 @@
+#if
+Operator 'if':
+if (condition) {operation};
+else {operation};
+
+#for
+cycle 'for':"
+for (initialization; condition; iteration)
+{operation};
+
+#switch
+Operator 'switch':
+switch (expression) {
+case: constant 1:
+operation;
+break;
+case: constant 2:
+operation;
+break;
+...
+case: constant n:
+operation;
+break;
+default:
+operation;
+}
+
+#while
+Cycle 'while':
+while (condition) {operation};
+
+#dowhile
+Operator do - 'while'
+do {operation
+} while (condition);
+
+#breack
+Operator break:
+break; or break mark;
+
+#continue
+Operator continue:
+continue; or continue mark;
+
+#test
+~
+#if
+Operator 'if':
+if (condition) {operation};
+else {operation};
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#for
+cycle 'for':"
+for (initialization; condition; iteration)
+{operation};
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#switch
+Operator 'switch':
+switch (expression) {
+case: constant 1:
+operation;
+break;
+case: constant 2:
+operation;
+break;
+...
+case: constant n:
+operation;
+break;
+default:
+operation;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#while
+Cycle 'while':
+while (condition) {operation};
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#dowhile
+Operator do - 'while'
+do {operation
+} while (condition);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#breack
+Operator break:
+break; or break mark;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#continue
+Operator continue:
+continue; or continue mark;
