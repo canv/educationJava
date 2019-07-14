@@ -4,23 +4,20 @@ import java.io.*;
 
 
 class Average {
-
-    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private PrintWriter consoleOut = new PrintWriter(System.out, true);
+    private BufferedReader consoleIn = new BufferedReader(new InputStreamReader(System.in));
     private String str;
 
-    private PrintWriter showMess() {
-        return new PrintWriter(System.out, true);
-    }
     private int howMuch() throws IOException {
-        showMess().println("How much numbers you will input?");
+        consoleOut.println("How much numbers you will input?");
 
         int numbers;
-        str = br.readLine();
+        str = consoleIn.readLine();
 
         try {
             numbers = Integer.parseInt(str);
         } catch (NumberFormatException exc) {
-            showMess().println("Wrong format!");
+            consoleOut.println("Wrong format!");
             return 0;
         }
         return numbers;
@@ -31,31 +28,27 @@ class Average {
         int num = howMuch();
         double intermediateValue, sum = 0;
 
-        showMess().println("Input " + num + " number:");
-
+        consoleOut.println("Input " + num + " number:");
 
         for (int i = 0; i < num; i++) {
             System.out.print("> ");
-            str = br.readLine();
+            str = consoleIn.readLine();
             try {
                 intermediateValue = Double.parseDouble(str);
             } catch (NumberFormatException exc) {
-                System.out.println("Wrong format!");
+                consoleOut.println("Wrong format!");
                 intermediateValue = 0;
             }
             sum += intermediateValue;
         }
-
-        showMess().println("Middle value: " + sum / num);
-
+        consoleOut.println("Middle value: " + sum / num);
     }
 }
 
 public class AvgNums {
     public static void main(String[] args) throws IOException {
 
-        Average tryIt = new Average();
-        tryIt.calculation();
-
+        Average findAvg = new Average();
+        findAvg.calculation();
     }
 }
