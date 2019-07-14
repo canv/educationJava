@@ -31,7 +31,7 @@ class Average {
         consoleOut.println("Input " + num + " number:");
 
         for (int i = 0; i < num; i++) {
-            System.out.print("> ");
+            consoleOut.print("> ");
             str = consoleIn.readLine();
             try {
                 intermediateValue = Double.parseDouble(str);
