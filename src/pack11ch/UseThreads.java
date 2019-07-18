@@ -4,24 +4,25 @@ import java.io.*;
 
 class MyThread implements Runnable {
     static PrintWriter consoleOut = new PrintWriter(System.out, true);
-    private String threadName;
+    private Thread threadOne;
 
-    MyThread(String threadName) {
-        this.threadName = threadName;
+    MyThread(String name) {
+        threadOne = new Thread(this, name);
+        threadOne.start();
     }
 
     @Override
     public void run() {
-        consoleOut.println(threadName + " - start");
+        consoleOut.println(threadOne.getName() + " - start");
         try {
             for (int count = 0; count < 10; count++) {
                 Thread.sleep(400);
-                consoleOut.println("In " + threadName + ", counter: " + count);
+                consoleOut.println("In " + threadOne.getName() + ", counter: " + count);
             }
         } catch (InterruptedException exc) {
-            consoleOut.println(threadName + " - interrupted!");
+            consoleOut.println(threadOne.getName() + " - interrupted!");
         }
-        consoleOut.println(threadName + " - completion");
+        consoleOut.println(threadOne.getName() + " - completion");
     }
 }
 
@@ -30,9 +31,6 @@ public class UseThreads {
         MyThread.consoleOut.println("Main stream - start");
 
         MyThread childOb = new MyThread("Child #1");
-        Thread childThd = new Thread(childOb);
-
-        childThd.start();
 
         for (int i = 0; i < 50; i++) {
             MyThread.consoleOut.print(".");
