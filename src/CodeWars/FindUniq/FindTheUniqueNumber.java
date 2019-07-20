@@ -9,7 +9,7 @@
 // Timed Out (16000 ms)
 // may be use recursion?
 
-package CodeWars;
+package CodeWars.FindUniq;
 
 public class FindTheUniqueNumber {
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class FindTheUniqueNumber {
         System.out.println(findUniq(x5));
     }
 
-    private static double findUniq(double[] arr) {
+    static double findUniq(double[] arr) {
 
         int tt;
         for (double value : arr) {
