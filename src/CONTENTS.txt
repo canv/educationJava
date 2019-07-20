@@ -21,9 +21,13 @@ pack11ch.Multithreaded programming
 	class PriorityDemo
 	    demo setPriority()
 	    demo join()
+
 	class SyncDemo
-	    Synchronization demo by method and block;
-		
+	    Synchronization demo by method and block
+
+	classThreadCom (in waitAndNotifyDemoPack)
+		wait() and notify() demo
+
 pack12ch.Enumerations, autopacking, static import and annotations
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
