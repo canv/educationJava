@@ -25,8 +25,12 @@ pack11ch.Multithreaded programming
 	class SyncDemo
 	    Synchronization demo by method and block
 
-	classThreadCom (in waitAndNotifyDemoPack)
+	class ThreadCom (in waitAndNotifyDemoPack)
 		wait() and notify() demo
+
+	class Suspend (in resumeSuspendStop)
+        resume(), suspend() and stop() not recommended for direct use
+        based on this we implement our own versions of these methods.
 
 pack12ch.Enumerations, autopacking, static import and annotations
 pack13ch.Generalizations
