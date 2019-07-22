@@ -11,7 +11,7 @@ public class UseMain {
                 "\n\nSetting the name and priority of the main thread\n");
 
         thread.setName("Thread #1");
-        thread.setPriority(8); //equivalently Thread.NORM_PRIORITY+3
+        thread.setPriority(8); //equivalently Thread.NORM_PRIORITY + 3
 
         consoleOut.println("New main thread name: " + thread.getName()+
                 "\nNew main thread priority: " + thread.getPriority());
