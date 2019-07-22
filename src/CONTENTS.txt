@@ -35,6 +35,9 @@ pack11ch.Multithreaded programming
     class UseMain
         mains thread control
 
+    class ThreadCom (in homework1Pack)
+        modified. But .print incorrect work, replaced by .printf
+
 pack12ch.Enumerations, autopacking, static import and annotations
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
