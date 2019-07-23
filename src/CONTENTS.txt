@@ -39,6 +39,10 @@ pack11ch.Multithreaded programming
         modified. But .print incorrect work, replaced by .printf
 
 pack12ch.Enumerations, autopacking, static import and annotations
+
+    class EnumDemo
+        enum, values() and valueOf() demo
+
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
