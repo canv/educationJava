@@ -50,6 +50,9 @@ pack12ch.Enumerations, autopacking, static import and annotations
         demo Traffic Light by thread
         v]\FQ]BKFZWQ]VWFZ]GUZF^WAA^K
 
+    class AutoBoxDemo
+        examples of use of object shell autoboxing
+
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
