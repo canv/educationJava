@@ -53,6 +53,9 @@ pack12ch.Enumerations, autopacking, static import and annotations
     class AutoBoxDemo
         examples of use of object shell autoboxing
 
+    class AnnoDemo (in AnnoPack)
+        Annptation and import static demo
+
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
