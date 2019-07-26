@@ -28,9 +28,9 @@ public class GenDemo {
 
         consoleOut.println("intObj value: " + intObj);
 
-        Gen<String> StringObj = new Gen<>("Generic test");
-        StringObj.showType();
-        String strObj = StringObj.getObject();
+        Gen<String> stringObj = new Gen<>("Generic test");
+        stringObj.showType();
+        String strObj = stringObj.getObject();
         consoleOut.println("strObj value: " + strObj);
     }
 
