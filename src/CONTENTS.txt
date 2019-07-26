@@ -60,6 +60,10 @@ pack12ch.Enumerations, autopacking, static import and annotations
         modified according to the task
 
 pack13ch.Generalizations
+
+    class GenDemo
+        Generic and getObject() demo
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
