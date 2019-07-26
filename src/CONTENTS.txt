@@ -56,6 +56,9 @@ pack12ch.Enumerations, autopacking, static import and annotations
     class AnnoDemo (in AnnoPack)
         Annptation and import static demo
 
+    class TrafficLightDemo (in homework1)
+        modified according to the task
+
 pack13ch.Generalizations
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
