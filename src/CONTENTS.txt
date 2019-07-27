@@ -64,6 +64,10 @@ pack13ch.Generalizations
     class GenDemo
         Generic and getObject() demo
 
+    class BoundsDemo
+        Generics with two type parameters, Generics bound types
+        Generic extends by generic demo
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
