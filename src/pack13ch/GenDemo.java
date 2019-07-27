@@ -24,8 +24,6 @@ public class GenDemo {
         integerObj.showType();
 
         int intObj = integerObj.getObject();
-        //int intObj = integerObj; - don't work! this is important!
-
         consoleOut.println("intObj value: " + intObj);
 
         Gen<String> stringObj = new Gen<>("Generic test");
