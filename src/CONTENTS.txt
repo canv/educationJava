@@ -68,6 +68,9 @@ pack13ch.Generalizations
         Generics with two type parameters, Generics bound types
         Generic extends by generic demo
 
+    class WildcardDemo
+        Argument templates demo
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
