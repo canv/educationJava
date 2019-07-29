@@ -74,6 +74,9 @@ pack13ch.Generalizations
     class BoundedWildcard
         Up and down bounds bemo
 
+    class GenVariants (in GenericInterfaceConstructorMethod)
+        Generic interface, constructor and method demo
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
