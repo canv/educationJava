@@ -77,6 +77,10 @@ pack13ch.Generalizations
     class GenVariants (in GenericInterfaceConstructorMethod)
         Generic interface, constructor and method demo
 
+    class GenQueueDemo (in GenericQueue)
+        Generic Line and Circular queues demo
+        (Dynamic queue is coming soon)
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
