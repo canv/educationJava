@@ -15,13 +15,7 @@ class Stack<T> implements IGenStack<T> {
     Stack(T[] makeFillArr, T[]than) {
         stackArr = makeFillArr;
 
-        for (T x : than) {
-            try {
-                push(x);
-            } catch (StackFullException exc) {
-                consoleOut.println(exc);
-            }
-        }
+        fillStack(than);
     }
 
     Stack(T[] makeCopyArr, Stack<T> object) {
@@ -57,6 +51,16 @@ class Stack<T> implements IGenStack<T> {
         return stackArr[index];
     }
 
+    void fillStack(T[] than){
+        for (T x : than) {
+            try {
+                push(x);
+            } catch (StackFullException exc) {
+                consoleOut.println(exc);
+            }
+        }
+    }
+
     void showContent() throws StackEmptyException {
         for (int i = 0; i < stackArr.length; i++) {
             consoleOut.print(pop() + " ");
@@ -69,13 +73,8 @@ public class GenStack {
     public static void main(String[] args) {
 
         Stack<Integer> stack1 = new Stack<>(new Integer[10]);
-        try {
-            for (int i = 0; i < 10; i++) {
-                stack1.push(i);
-            }
-        } catch (StackFullException exc) {
-            consoleOut.println(exc);
-        }
+        Integer[]numbers = {0,1,2,3,4,5,6,777,8,9};
+        stack1.fillStack(numbers);
 
         String[] name = {"One","Two","Three"};
         Stack<String> stack2 = new Stack<>(new String[3],name);
