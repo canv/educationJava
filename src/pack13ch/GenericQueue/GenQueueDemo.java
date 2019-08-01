@@ -24,6 +24,22 @@ public class GenQueueDemo {
         charCircularQueue.circularPropertyDemo(
                 new Character[]{'A','B','C','D','E','F','G','H','I','J'});
 
-        //Dynamic queue in development...
+
+        DynamicQueue<Number> numberDynamicQueue =
+                new DynamicQueue<>(new Number[4],"NumberDynamicQueue");
+        numberDynamicQueue.operation(
+                new Number[]{1f,1.5,2,2.5,3,3.5,4L});
+
+        DynamicQueue<String> stringDynamicQueue =
+                new DynamicQueue<>(new String[4],"StringDynamicQueue");
+        stringDynamicQueue.operation(
+                new String[]{"One","Two","three","four","five","six","seven"});
+
+        DynamicQueue<Character> charDynamicQueue =
+                new DynamicQueue<>(new Character[4],"CharacterDynamicQueue");
+        charDynamicQueue.operation(
+                new Character[]{'A','B','C','D','E','F','G'});
+
+        //DynamicCircular queue is coming soon...
     }
 }
