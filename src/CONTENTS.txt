@@ -81,6 +81,9 @@ pack13ch.Generalizations
         Generic Line and Circular queues demo
         (Dynamic queue is coming soon)
 
+    class GenStack (in genStackPack)
+        Make generic stack
+
 pack14ch.Lambda expressions and references to methods
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
