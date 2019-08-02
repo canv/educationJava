@@ -4,7 +4,6 @@ public class GenQueueDemo {
     public static void main(String[] args)
             throws QueueEmptyException, QueueFullException {
 
-
         Integer[] intObject = new Integer[6]; // size+1 for correct using queues
         LineQueue<Integer> intLineQueue = new LineQueue<>(intObject, "IntegerLineQueue");
         Integer[] intData = {10, 20, 30, 40, 500};
@@ -30,9 +29,9 @@ public class GenQueueDemo {
         numberDynamicQueue.operation(
                 new Number[]{1f,1.5,2,2.5,3,3.5,4L});
 
-        DynamicQueue<String> stringDynamicQueue =
+        DynamicQueue<String> strDynamicQueue =
                 new DynamicQueue<>(new String[4],"StringDynamicQueue");
-        stringDynamicQueue.operation(
+        strDynamicQueue.operation(
                 new String[]{"One","Two","three","four","five","six","seven"});
 
         DynamicQueue<Character> charDynamicQueue =
@@ -40,6 +39,18 @@ public class GenQueueDemo {
         charDynamicQueue.operation(
                 new Character[]{'A','B','C','D','E','F','G'});
 
-        //DynamicCircular queue is coming soon...
+
+        DynCirQueue<Character> charDynCirQueue =
+                new DynCirQueue<>(new Character[4],"CharacterDynCirQueue");
+        charDynCirQueue.operation(
+                new Character[]{'1','2','3'});
+
+        charDynCirQueue.reset();
+        charDynCirQueue.operation(
+                new Character[]{'1','2','3','A','B','C','♥'});
+
+        charDynCirQueue.reset();
+        charDynCirQueue.circularPropertyDemo(
+                new Character[]{'1','2','3','A','B','C','♥','♦','♣','♠','☺'});
     }
 }

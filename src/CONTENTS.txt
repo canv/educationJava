@@ -78,8 +78,7 @@ pack13ch.Generalizations
         Generic interface, constructor and method demo
 
     class GenQueueDemo (in GenericQueue)
-        Generic Line and Circular queues demo
-        (Dynamic queue is coming soon)
+        Make generic Line, Circular, Dynamic and Dynamic-Circular queues
 
     class GenStack (in genStackPack)
         Make generic stack

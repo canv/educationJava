@@ -24,12 +24,4 @@ public class DynamicQueue<T> extends MasterQueue<T> {
         if (getExtInd() == getQArr().length) setExtInd(0);
         return getQArr()[getExtInd()];
     }
-
-    public Object[] arrExpansionTwice(T[] who) {
-        Object[] arrMask = new Object[who.length * 2];
-        for (int i = 0; i < who.length; i++)
-            arrMask[i] = who[i];
-
-        return arrMask;
-    }
 }

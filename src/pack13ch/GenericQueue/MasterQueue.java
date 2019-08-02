@@ -15,9 +15,7 @@ public abstract class MasterQueue<T> implements IGenQ<T> {
 
     public abstract void put(T val) throws QueueFullException;
     public abstract T get() throws QueueEmptyException;
-    public void reset() {
-        putInd = extInd = 0;
-    }
+    public void reset() {putInd = extInd = 0;}
 
     private void filling(T[] fillIt) throws QueueFullException {
         for (T t : fillIt) put(t);
@@ -32,23 +30,23 @@ public abstract class MasterQueue<T> implements IGenQ<T> {
         extraction();
     }
 
-    void setQArr(T[] qArr) {
-        this.queueStore = qArr;
+    public Object[] arrExpansionTwice(T[] who) {
+        Object[] arrMask = new Object[who.length * 2];
+        arrCopy(who,arrMask);
+        return arrMask;
     }
-    void setPutInd(int putInd) {
-        this.putInd = putInd;
-    }
-    void setExtInd(int extInd) {
-        this.extInd = extInd;
+    private static void arrCopy(Object[] copyFrom, Object[] copyHere) {
+//      System.arraycopy(copyFrom, 0, copyHere, 0, copyFrom.length);
+        for (int i = 0; i < copyFrom.length; i++) {
+            copyHere[i] = copyFrom[i];
+        }
     }
 
-    T[] getQArr() {
-        return queueStore;
-    }
-    int getPutInd() {
-        return putInd;
-    }
-    int getExtInd() {
-        return extInd;
-    }
+    void setQArr(T[] qArr) {this.queueStore = qArr;}
+    void setPutInd(int putInd) {this.putInd = putInd;}
+    void setExtInd(int extInd) {this.extInd = extInd;}
+
+    T[] getQArr() {return queueStore;}
+    int getPutInd() {return putInd;}
+    int getExtInd() {return extInd;}
 }
