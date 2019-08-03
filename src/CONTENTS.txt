@@ -84,6 +84,10 @@ pack13ch.Generalizations
         Make generic stack
 
 pack14ch.Lambda expressions and references to methods
+
+    class LambdaDemo
+        simple lamba function
+
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
