@@ -91,6 +91,9 @@ pack14ch.Lambda expressions and references to methods
     class GenLambdaDemo
         we can use lambda with generics, and by code blocks
 
+    class LambdaArgumentDemo
+        using lambda expression as method argument
+
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
