@@ -1,4 +1,4 @@
-package pack14ch;
+package pack14ch.StMethodReferencesPack;
 
 import static packAlternative.AOutput.consoleOut;
 

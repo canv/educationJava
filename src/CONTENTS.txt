@@ -94,8 +94,11 @@ pack14ch.Lambda expressions and references to methods
     class LambdaArgumentDemo
         using lambda expression as method argument
 
-    class MethodRefDemo
+    class MethodRefDemo (in StMethodReferencesPack)
         static method references demo
+
+    class ObjMethodRefDemo (in ObjMethodReferencesPack)
+        instance method references demo
 
 pack15ch.Applets, events, and other issues
 pack16ch.Introduction to Swing
