@@ -25,6 +25,26 @@ class MyIntPredicates {
     }
 }
 
+class MyIntNum {
+    private int firstNum;
+
+    MyIntNum(int firstNum) {
+        this.firstNum = firstNum;
+    }
+
+    boolean hasCommandFactor(int secondNum) {
+        int topVal = firstNum;
+        if (secondNum > firstNum) topVal = secondNum;
+
+        for (int i = 2; i < topVal; i++)
+            if (firstNum % i == 0 && secondNum % i == 0) {
+                consoleOut.print("Command factor is " + i);
+                return true;
+            }
+        return false;
+    }
+}
+
 public class MethodRefDemo {
     private static boolean numTest(IntPredicate p, int val) {
         return p.test(val);
@@ -44,5 +64,9 @@ public class MethodRefDemo {
 
         if (MyIntPredicates.isPositive(2))
             consoleOut.println("2 - still positive");
+
+        MyIntNum firstNumber = new MyIntNum(10);
+        result = numTest(firstNumber::hasCommandFactor, 6);
+        if(result)consoleOut.println("!");
     }
 }
