@@ -42,6 +42,20 @@ public class LambdaArgumentDemo {
         consoleOut.println("\nString with reverse case: " + outStr);
 
 
+        outStr = changeStr((str) -> {
+            String result = "";
+            char ch;
+
+            for (int i = 0; i < str.length(); i++) {
+                ch = str.charAt(i);
+                if (str.charAt(i) == ' ') continue;
+                result += ch;
+            }
+            return result;
+        }, inStr);
+        consoleOut.println("\nString without spaces: " + outStr);
+
+
         consoleOut.println("\nString with replaced spaces: " +
                 changeStr((str) -> str.replace(' ', '-'), inStr));
 
