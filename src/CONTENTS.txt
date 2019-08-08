@@ -104,5 +104,9 @@ pack14ch.Lambda expressions and references to methods
         constructor references demo
 
 pack15ch.Applets, events, and other issues
+
+    class SimpleApplet
+        html doesn't work
+
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
