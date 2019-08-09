@@ -108,5 +108,8 @@ pack15ch.Applets, events, and other issues
     class SimpleApplet
         html doesn't work
 
+    class Banner
+        simple web banner and repaint() demo
+
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
