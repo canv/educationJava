@@ -1,4 +1,4 @@
-package ASClasses;
+package course;
 
 import java.util.Arrays;
 
@@ -50,7 +50,7 @@ public class Lesson2 {
                 -38, -48, -50, -45, -72,
                 -22,  87, -67,  34,  19};
 
-        QuickSort(defaultArr);
+        quickSort(defaultArr);
         consoleOut.println("\n" + Arrays.toString(defaultArr));
 
         int wantedVal = 34;
@@ -69,10 +69,10 @@ public class Lesson2 {
                  99, -39, -75,  10, -60,
                 -37,  -4,  16, -19,  97,  17};
 
-        int withoutPairIndex = withoutPairSearch(almostPairValues);
-        consoleOut.println((withoutPairIndex==-1000)?
-                "without pair value is not found" :
-                "without Pair value is " + withoutPairIndex);
+        int withoutPairVal = withoutPairSearch2(almostPairValues);
+        consoleOut.println((withoutPairVal==0)?
+                "\nWithout pair value is not found" :
+                "\nWithout Pair value is " + withoutPairVal);
     }
 
     private static int factorial(int n) {
@@ -96,7 +96,7 @@ public class Lesson2 {
                 "through the gamma function.");
     }
 
-    private static void QuickSort(int[] processedArray) {
+    private static void quickSort(int[] processedArray) {
         qsAlgorithm(processedArray, 0, processedArray.length - 1);
         //Такие костыли в виде доп медода пришлось использовать
         //изза рекурсивности метода
@@ -146,7 +146,7 @@ public class Lesson2 {
         return -1;
     }
 
-    private static int withoutPairSearch(int[] processedArray){
+    private static int withoutPairSearch1(int[] processedArray){
         int pairFlag = 0;
         for (int i = 0; i <processedArray.length; i++) {
             for (int j = 0; j < processedArray.length; j++) {
@@ -158,5 +158,11 @@ public class Lesson2 {
             pairFlag=0;
         }
         return -1000;
+    }
+    private static int withoutPairSearch2(int[] processedArray){
+        int result = 0;
+        for (int i = 0; i <processedArray.length; i++)
+            result ^= processedArray[i];
+        return result;
     }
 }

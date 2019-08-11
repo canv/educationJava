@@ -1,5 +1,5 @@
 //  Задания(c 36m20s):
-package ASClasses;
+package course;
 
 public class Lesson1 {
     public static void main(String[] args) {
