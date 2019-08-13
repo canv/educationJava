@@ -28,10 +28,18 @@ class Human{
                 ", manna=" + manna +
                 '}';
     }
-    public boolean equals(Human obj) {
-        return (this.nickname == obj.nickname
-                && this.health == obj.health
-                && this.manna == obj.manna );
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if(obj == null
+                || obj.getClass()
+                != this.getClass()) return false;
+
+        Human guest = (Human) obj;
+        return (this.nickname.equals(guest.nickname)
+                && this.health == guest.health
+                && this.manna == guest.manna);
     }
 }
 
@@ -47,8 +55,8 @@ public class Lesson3 {
                 .withHealth(15)
                 .withManna(0);
 
-        Human mage1 = new Human()
-                .withNickname("YOLO")
+        Human mag1 = new Human()
+                .withNickname("YOKO")
                 .withHealth(6)
                 .withManna(22);
 
@@ -56,7 +64,7 @@ public class Lesson3 {
 
 // 1) Отобразить информацию о классе через консольный вывод
         consoleOut.println(warrior);
-        consoleOut.println(mage1);
+        consoleOut.println(mag1);
         /*
             Отображение возможно благодаря переопределению метода toString
         */
@@ -81,7 +89,7 @@ public class Lesson3 {
 
         army.addElement(warrior);
         army.addElement(warriorCopy);
-        army.addElement(mage1);
+        army.addElement(mag1);
 
         consoleOut.println(army.getElement(2));
         consoleOut.println(army.getElement(1));
