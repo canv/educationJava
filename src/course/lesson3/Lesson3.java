@@ -28,7 +28,6 @@ class Human{
                 ", manna=" + manna +
                 '}';
     }
-
     @Override
     public boolean equals(Object obj) {
 
