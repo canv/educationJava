@@ -28,10 +28,17 @@ class Human{
                 ", manna=" + manna +
                 '}';
     }
-    public boolean equals(Human obj) {
-        return (this.nickname == obj.nickname
-                && this.health == obj.health
-                && this.manna == obj.manna );
+    @Override
+    public boolean equals(Object obj) {
+
+        if(obj == null
+                || obj.getClass()
+                != this.getClass()) return false;
+
+        Human guest = (Human) obj;
+        return (this.nickname.equals(guest.nickname)
+                && this.health == guest.health
+                && this.manna == guest.manna);
     }
 }
 
