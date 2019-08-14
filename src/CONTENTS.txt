@@ -111,5 +111,8 @@ pack15ch.Applets, events, and other issues
     class Banner
         simple web banner and repaint() demo
 
+    class Param
+        param to applet
+
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
