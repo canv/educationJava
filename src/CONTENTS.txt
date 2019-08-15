@@ -114,5 +114,8 @@ pack15ch.Applets, events, and other issues
     class Param
         param to applet
 
+    class MouseEvents
+        simple mouse events demo
+
 pack16ch.Introduction to Swing
 pack17ch.Introduction to JavaFX
