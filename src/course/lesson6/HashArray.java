@@ -2,91 +2,100 @@ package course.lesson6;
 
 import static packAlternative.AOutput.consoleOut;
 
-class MyHashMap {
-    private static final int SIZE = 1000000;
+public class HashArray<K,V> {
+    private static final int SIZE = 1_000_000;
+    private MyLinkedList[] hashArray = new MyLinkedList[SIZE];
 
-    private Entry[] table = new Entry[SIZE];
+    public void put(K key, V val) {
+        int hash = key.hashCode() * 32 & SIZE;
+        consoleOut.println("h ~ "+hash);
 
-
-    public void put(String key, String val) {
-        int hash = key.hashCode() % SIZE;
-        Entry e = table[hash];
-
-        if (e != null) {
-            if (e.key.equals(key)) {
-                e.value = val;
-            } else {
-                while (e.next != null) {
-                    e = e.next;
-                }
-                e.next = new Entry(key, val);
-            }
+        if (hashArray[hash] == null) {
+            MyLinkedList<K, V> entry = new MyLinkedList<>();
+            entry.addToEnd(key, val);
+            hashArray[hash] = entry;
         } else {
-            Entry entryInNewBucket = new Entry(key, val);
-            table[hash] = entryInNewBucket;
+            hashArray[hash].addToEnd(key, val);
         }
     }
 
-
-    public Entry get(String key) {
-        int hash = key.hashCode() % SIZE;
-        Entry e = table[hash];
-
-        while (e != null) {
-            if (e.key.equals(key)) {
-                return e;
-            }
-            e = e.next;
-        }
+    public String get(K key) {
+        int hash = key.hashCode()* 32 & SIZE;
+        MyLinkedList extract = hashArray[hash];
+        try {
+            return (String) extract.getElement(key);
+        }catch (NullPointerException exc)
+        {consoleOut.println("Key \"" + key + "\" not found");}
         return null;
     }
-}
 
-class Entry {
-    final String key;
-    String value;
-    Entry next;
+    class MyLinkedList<K,V>{
+        private Node<K,V> firstNode;
+        private Node<K,V> lastNode;
+        private int listSize = 0;
 
-    Entry(String key, String val) {
-        this.key = key;
-        value = val;
-    }
+        MyLinkedList(){
+            lastNode = new Node<>(firstNode,null, null,null);
+            firstNode = new Node<>(null,null, null,lastNode);
+        }
 
-    public String getValue() {
-        return value;
-    }
+        void addToEnd(K key, V element) {
+            Node<K,V> prev = lastNode;
+            prev.setKey(key);
+            prev.setCurrentElement(element);
+            lastNode = new Node<>(prev,null,null,null);
+            prev.setNextElement(lastNode);
+            listSize++;
+        }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+        V getElement(K key) {
+            Node<K, V> target = firstNode.getNextElement();
+            for (int i = 0; i < listSize; i++) {
+                if (target != null && target.currentKey.equals(key)) continue;
+                target = target.getNextElement();
+            }
+            return target.getCurrentElement();
+        }
 
-//    public String getKey() {
-//        return key;
-//    }
+        private class Node<K,V>{
 
-//        @Override
-//        public String toString() {
-//            return "Entry{" +
-//                    "key='" + key + '\'' +
-//                    ", value='" + value + '\'' +
-//                    '}';
-//        }
-}
+            private Node<K,V> prevElement;
+            private K currentKey;
+            private V currentElement;
+            private Node<K,V> nextElement;
 
-    public class HashArray {
-        public static void main(String[] args) {
+            private Node(Node<K,V> prevElement, K currentKey, V currentElement, Node<K,V> nextElement){
+                this.prevElement = prevElement;
+                this.currentKey = currentKey;
+                this.currentElement = currentElement;
+                this.nextElement = nextElement;
+            }
 
-            MyHashMap test = new MyHashMap();
+            Node<K,V> getPrevElement() {
+                return prevElement;
+            }
+            V getCurrentElement() {
+                return currentElement;
+            }
+            K getKey() {
+                return currentKey;
+            }
+            Node<K,V> getNextElement() {
+                return nextElement;
+            }
 
-
-            test.put("test1","testOne");
-            test.put("test2","testTwo");
-            test.put("test3","testThree");
-
-            Entry e = test.get("test2");
-
-            consoleOut.println(e.getValue());
-
-
+            void setKey(K key) {
+                this.currentKey = key;
+            }
+            void setPrevElement(Node<K,V> prevElement) {
+                this.prevElement = prevElement;
+            }
+            void setCurrentElement(V currentElement) {
+                this.currentElement = currentElement;
+            }
+            void setNextElement(Node<K,V> nextElement) {
+                this.nextElement = nextElement;
+            }
         }
     }
+}
