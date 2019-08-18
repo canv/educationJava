@@ -118,4 +118,7 @@ pack15ch.Applets, events, and other issues
         simple mouse events demo
 
 pack16ch.Introduction to Swing
+
+    class SwingDemo
+        simple swing app demo
 pack17ch.Introduction to JavaFX
