@@ -121,4 +121,8 @@ pack16ch.Introduction to Swing
 
     class SwingDemo
         simple swing app demo
+
+    class ButtonDemo
+        simple JButton demo
+
 pack17ch.Introduction to JavaFX
