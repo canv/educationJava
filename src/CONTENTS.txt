@@ -128,4 +128,7 @@ pack16ch.Introduction to Swing
     class TFDemo
         JTextField demo
 
+    class CBDemo
+        JCheckBox demo
+
 pack17ch.Introduction to JavaFX
