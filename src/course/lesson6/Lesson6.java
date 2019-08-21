@@ -5,23 +5,23 @@ import static packAlternative.AOutput.consoleOut;
 public class Lesson6 {
     public static void main(String[] args) {
 
-// 2) Сделать свой HashMap
-        HashArray<String,String> test = new HashArray<>();
+// 1) Сделать свой HashMap
+        HashArray<String, String> test = new HashArray<>();
 
-        test.put("1", "testOne");
-        test.put("test2", "testTwo");
-        test.put("123", "testThree");
-        consoleOut.println(test.get("1"));
-        consoleOut.println(test.get("test2"));
-        consoleOut.println(test.get("123"));
+        test.put("hashKeyOne", "HashMapOne");
+        test.put("التجزئةمفتاحاثنين", "HashMapTwo");
+        test.put("מפתחשני", "HashMapThree");
+        consoleOut.println(test.get("hashKeyOne"));
+        consoleOut.println(test.get("التجزئةمفتاحاثنين"));
+        consoleOut.println(test.get("מפתחשני"));
         /*
             Данная HashTable реализована на основе массива LinkedDist'ов
           На вход подаётся пара ключ-значение где уникальный hashCode()
           ключа является индексом массива
         */
 
-        test.put("AaAaBB", "testCollision1");
-        test.put("AaAaAa", "testCollision2");
+        test.put("AaAaBB", "hashKeyCollision(1)");
+        test.put("AaAaAa", "hashKeyCollision(2)");
         consoleOut.println(test.get("AaAaBB"));
         consoleOut.println(test.get("AaAaAa"));
         /*
@@ -30,7 +30,23 @@ public class Lesson6 {
           и в дальнейшем значение ищется по эквивалентности значения ключейключей
         */
 
-// 1) сделать двусвязный список где у каждой ноды свой HashKey
-// 3) сделать Бинарное дерево поиска так же с HashKey
+// 2) сделать Бинарное дерево поиска так же с HashKey
+
+        MyTreeMap<String, String> treeTest = new MyTreeMap<>();
+
+        treeTest.add("treeKeyOne", "testOne");
+        treeTest.add("treeKeyTwo", "testTwo");
+        treeTest.add("treeKeyThree", "testThree");
+
+        consoleOut.println(" ");
+
+        consoleOut.println(treeTest.get("treeKeyOne"));
+        consoleOut.println(treeTest.get("treeKeyTwo"));
+        consoleOut.println(treeTest.get("treeKeyThree"));
+
+//        treeTest.add("AaAaBB", "testCollision1");
+//        treeTest.add("AaAaAa", "testCollision2");
+//        consoleOut.println(treeTest.get("AaAaBB"));
+//        consoleOut.println(treeTest.get("AaAaAa"));
     }
 }

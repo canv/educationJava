@@ -8,7 +8,6 @@ public class HashArray<K,V> {
 
     public void put(K key, V val) {
         int hash = key.hashCode() * 32 & SIZE;
-        consoleOut.println("h ~ "+hash);
 
         if (hashArray[hash] == null) {
             MyLinkedList<K, V> entry = new MyLinkedList<>();
