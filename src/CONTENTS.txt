@@ -131,4 +131,7 @@ pack16ch.Introduction to Swing
     class CBDemo
         JCheckBox demo
 
+    class ListDemo
+        JList's functions demo
+
 pack17ch.Introduction to JavaFX
