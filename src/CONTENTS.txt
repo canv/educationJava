@@ -134,4 +134,7 @@ pack16ch.Introduction to Swing
     class ListDemo
         JList's functions demo
 
+    class SwingFC
+        files comparing program
+
 pack17ch.Introduction to JavaFX
