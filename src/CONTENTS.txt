@@ -137,4 +137,7 @@ pack16ch.Introduction to Swing
     class SwingFC
         files comparing program
 
+    class SwingApplet
+        Simple swing applet demo
+
 pack17ch.Introduction to JavaFX
