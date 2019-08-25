@@ -1,6 +1,6 @@
 package course.lesson6;
 
-class MyLinkedList<K,V>{
+class MyLinkedList<K,V> implements Comparable<K>{
     private Node<K,V> firstNode;
     private Node<K,V> lastNode;
     private int listSize = 0;
@@ -26,6 +26,19 @@ class MyLinkedList<K,V>{
             target = target.getNextElement();
         }
         return target.getCurrentElement();
+    }
+
+    @Override
+    public int compareTo(K key) {
+        return this.getKey().hashCode() - key.hashCode();
+    }
+
+    K getKey() {
+        return lastNode.prevElement.getKey();
+    }
+
+    V getLastNodeCurrentElement() {
+        return lastNode.getCurrentElement();
     }
 
     private class Node<K,V>{

@@ -15,7 +15,7 @@ public class Lesson6 {
         consoleOut.println(test.get("التجزئةمفتاحاثنين"));
         consoleOut.println(test.get("מפתחשני"));
         /*
-            Данная HashTable реализована на основе массива LinkedDist'ов
+            Данная HashTable реализована на основе массива LinkedList'ов
           На вход подаётся пара ключ-значение где уникальный hashCode()
           ключа является индексом массива
         */
@@ -30,23 +30,22 @@ public class Lesson6 {
           и в дальнейшем значение ищется по эквивалентности значения ключейключей
         */
 
-// 2) сделать Бинарное дерево поиска так же с HashKey
+        consoleOut.println(" ");
+
+// 2) сделать Бинарное дерево поиска, так же с HashKey
 
         MyTreeMap<String, String> treeTest = new MyTreeMap<>();
 
-        treeTest.add("treeKeyOne", "testOne");
-        treeTest.add("treeKeyTwo", "testTwo");
-        treeTest.add("treeKeyThree", "testThree");
-
-        consoleOut.println(" ");
-
+        treeTest.add("treeKeyOne", "TreeMapOne");
+        treeTest.add("treeKeyTwo", "TreeMapTwo");
+        treeTest.add("treeKeyThree", "TreeMapThree");
         consoleOut.println(treeTest.get("treeKeyOne"));
         consoleOut.println(treeTest.get("treeKeyTwo"));
         consoleOut.println(treeTest.get("treeKeyThree"));
 
-//        treeTest.add("AaAaBB", "testCollision1");
-//        treeTest.add("AaAaAa", "testCollision2");
-//        consoleOut.println(treeTest.get("AaAaBB"));
-//        consoleOut.println(treeTest.get("AaAaAa"));
+        treeTest.add("AaAaBB", "treeMapCollision(1)");
+        treeTest.add("AaAaAa", "treeMapCollision(2)");
+        consoleOut.println(treeTest.get("AaAaBB"));
+        consoleOut.println(treeTest.get("AaAaAa"));
     }
 }
