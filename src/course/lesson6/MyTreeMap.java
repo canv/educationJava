@@ -6,61 +6,51 @@ class MyTreeMap<K,V> {
 
 
     private Leaf<K,V> root;
-//    private List<K,V> list;
+    private MyLinkedList<K,V> list;
     private int size = 0;
 
 
     MyTreeMap(){
-//        list = new LinkedList<>();
+        list = new MyLinkedList<>();
         root = new Leaf<>(null,null);
     }
 
     void add(K key, V val){
-        Leaf<K, V> newNode = new Leaf<>(key, val);
+        Leaf<K, V> newLeaf = new Leaf<>(key, val);
 
         if (size == 0) {
-            root = newNode;
+            root = newLeaf;
             size++;
-            consoleOut.println("\t~Add*h~ " + root.getKey() + " " +
-                    root.getKey().hashCode());
+
             return;
         }
 
-        Leaf<K, V> lastNode = findLastNode(root, newNode);
-
-        if (lastNode.compareTo(newNode.getKey()) < 0)
-            lastNode.right = newNode;
-        else lastNode.left = newNode;
+        Leaf<K, V> lastLeaf = findLastLeaf(root, newLeaf);
+        if (lastLeaf.compareTo(newLeaf.getKey()) < 0)
+            lastLeaf.right = newLeaf;
+        else lastLeaf.left = newLeaf;
 
         size++;
     }
-
-    private Leaf<K,V> findLastNode(Leaf<K,V> oldLeaf, Leaf<K,V> newLeaf) {
-
+    private Leaf<K,V> findLastLeaf(Leaf<K,V> oldLeaf, Leaf<K,V> newLeaf) {
         Leaf<K,V> lastLeaf = oldLeaf;
         int compare = oldLeaf.compareTo(newLeaf.getKey());
-        consoleOut.println("\t~Add*h~ " + newLeaf.getKey() + " " +
-                newLeaf.getKey().hashCode() + " / " + compare);
 
         if(compare < 0 && oldLeaf.right != null){
-            lastLeaf = findLastNode(oldLeaf.right, newLeaf);
-            consoleOut.println("+");
+            lastLeaf = findLastLeaf(oldLeaf.right, newLeaf);
             return lastLeaf;
         }
 
-        if(compare > 0 && oldLeaf.right != null){
-            lastLeaf = findLastNode(oldLeaf.left, newLeaf);
-            consoleOut.println("++");
+        if(compare > 0 && oldLeaf.left != null){
+            lastLeaf = findLastLeaf(oldLeaf.left, newLeaf);
             return lastLeaf;
         }
 
         if(compare == 0) {
             consoleOut.println("collision!");
-            consoleOut.println("--");
             return null;
         }
 
-        consoleOut.println("-");
         return lastLeaf;
     }
 
@@ -68,11 +58,8 @@ class MyTreeMap<K,V> {
         Leaf<K,V> eLeaf = new Leaf<>(key, null);
         return search(root,eLeaf);
     }
-
     private Leaf<K,V> search(Leaf<K, V> leaf, Leaf<K, V> eLeaf){
         int compare = leaf.compareTo(eLeaf.getKey());
-        consoleOut.println("\t~Get*h~ " + eLeaf.getKey() + " " +
-                eLeaf.getKey().hashCode() + " / " + compare);
 
         if(compare < 0 && leaf.right != null){
             return search(leaf.right,eLeaf);}
@@ -86,7 +73,7 @@ class MyTreeMap<K,V> {
     }
 
 
-    public class Leaf<K,V> implements Comparable<K>{
+    class Leaf<K,V> implements Comparable<K>{
         private Leaf<K,V> right;
         private Leaf<K,V> left;
         private K key;
@@ -119,4 +106,6 @@ class MyTreeMap<K,V> {
             return "TreeMap: " + val + "";
         }
     }
+
+
 }
