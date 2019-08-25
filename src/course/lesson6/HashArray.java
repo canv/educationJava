@@ -2,91 +2,29 @@ package course.lesson6;
 
 import static packAlternative.AOutput.consoleOut;
 
-class MyHashMap {
-    private static final int SIZE = 1000000;
+public class HashArray<K,V> {
+    private static final int SIZE = 1_000_000;
+    private MyLinkedList[] hashArray = new MyLinkedList[SIZE];
 
-    private Entry[] table = new Entry[SIZE];
+    public void put(K key, V val) {
+        int hash = key.hashCode() * 32 & SIZE;
 
-
-    public void put(String key, String val) {
-        int hash = key.hashCode() % SIZE;
-        Entry e = table[hash];
-
-        if (e != null) {
-            if (e.key.equals(key)) {
-                e.value = val;
-            } else {
-                while (e.next != null) {
-                    e = e.next;
-                }
-                e.next = new Entry(key, val);
-            }
+        if (hashArray[hash] == null) {
+            MyLinkedList<K, V> entry = new MyLinkedList<>();
+            entry.addToEnd(key, val);
+            hashArray[hash] = entry;
         } else {
-            Entry entryInNewBucket = new Entry(key, val);
-            table[hash] = entryInNewBucket;
+            hashArray[hash].addToEnd(key, val);
         }
     }
 
-
-    public Entry get(String key) {
-        int hash = key.hashCode() % SIZE;
-        Entry e = table[hash];
-
-        while (e != null) {
-            if (e.key.equals(key)) {
-                return e;
-            }
-            e = e.next;
-        }
+    public String get(K key) {
+        int hash = key.hashCode()* 32 & SIZE;
+        MyLinkedList extract = hashArray[hash];
+        try {
+            return (String) extract.getElement(key);
+        }catch (NullPointerException exc)
+        {consoleOut.println("Key \"" + key + "\" not found");}
         return null;
     }
 }
-
-class Entry {
-    final String key;
-    String value;
-    Entry next;
-
-    Entry(String key, String val) {
-        this.key = key;
-        value = val;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-//    public String getKey() {
-//        return key;
-//    }
-
-//        @Override
-//        public String toString() {
-//            return "Entry{" +
-//                    "key='" + key + '\'' +
-//                    ", value='" + value + '\'' +
-//                    '}';
-//        }
-}
-
-    public class HashArray {
-        public static void main(String[] args) {
-
-            MyHashMap test = new MyHashMap();
-
-
-            test.put("test1","testOne");
-            test.put("test2","testTwo");
-            test.put("test3","testThree");
-
-            Entry e = test.get("test2");
-
-            consoleOut.println(e.getValue());
-
-
-        }
-    }
