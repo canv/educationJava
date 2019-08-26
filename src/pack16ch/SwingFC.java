@@ -16,13 +16,14 @@ public class SwingFC implements ActionListener {
 
     private JTextField firstFileName, secondFileName;
     private JButton compareButton;
-    private JLabel labFirstFile, labSeconfFile;
+    private JLabel labFirstFile, labSecondFile;
     private JLabel labResult;
+    private JCheckBox cbShowMismatch;
 
     SwingFC() {
         JFrame jFrame = new JFrame("Compare files");
         jFrame.setLayout(new FlowLayout());
-        jFrame.setSize(200, 190);
+        jFrame.setSize(220, 205);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         firstFileName = new JTextField(14);
@@ -34,13 +35,16 @@ public class SwingFC implements ActionListener {
         compareButton.addActionListener(this);
 
         labFirstFile = new JLabel("First file address:");
-        labSeconfFile = new JLabel("Second file address:");
+        labSecondFile = new JLabel("Second file address:");
         labResult = new JLabel("");
+
+        cbShowMismatch = new JCheckBox("Show mismatch position");
 
         jFrame.add(labFirstFile);
         jFrame.add(firstFileName);
-        jFrame.add(labSeconfFile);
+        jFrame.add(labSecondFile);
         jFrame.add(secondFileName);
+        jFrame.add(cbShowMismatch);
         jFrame.add(compareButton);
         jFrame.add(labResult);
 
@@ -49,7 +53,7 @@ public class SwingFC implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        int i, j;
+        int i, j, count = 0;
 
         if (firstFileName.getText().equals("")) {
             labResult.setText("First file name missing");
@@ -66,10 +70,15 @@ public class SwingFC implements ActionListener {
             do {
                 i = f1.read();
                 j = f2.read();
+                count++;
                 if (i != j) break;
             } while (i != -1 && j != -1);
-            if (i != j) labResult.setText("Files aren't the same");
-            else labResult.setText("Files compare equal");
+            if (i != j) {
+                if (cbShowMismatch.isSelected()) labResult.setText("Files aren't the same, on " + count +
+                        " position ");
+                        //+"(mismatch \"" + i + "\" and \"" + j + "\")");
+                else labResult.setText("Files aren't the same");
+            } else labResult.setText("Files compare equal");
         } catch (IOException e) {
             labResult.setText("File not found");
         }
