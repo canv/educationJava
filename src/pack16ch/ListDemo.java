@@ -24,7 +24,7 @@ class ListDemo implements ListSelectionListener {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         jList = new JList<>(names);
-        jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         jScrollPane = new JScrollPane(jList);
         jScrollPane.setPreferredSize(new Dimension(120,90));
