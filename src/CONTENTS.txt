@@ -141,3 +141,6 @@ pack16ch.Introduction to Swing
         Simple swing applet demo
 
 pack17ch.Introduction to JavaFX
+
+    class JavaFXSkel
+        JavaFX app work processing demo
