@@ -147,3 +147,6 @@ pack17ch.Introduction to JavaFX
 
     class JavaFXLabelDemo
         Label component demo
+
+    class JavaFXEventDemo
+        Button and Event demo
