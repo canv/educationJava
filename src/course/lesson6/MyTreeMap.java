@@ -1,6 +1,6 @@
 package course.lesson6;
 
-class MyTreeMap<K,V> {
+class MyTreeMap<K,V> implements MyMap<K,V> {
     private Leaf<K,V> root;
     private int size = 0;
 
@@ -8,7 +8,8 @@ class MyTreeMap<K,V> {
         root = new Leaf<>();
     }
 
-    void add(K key, V val){
+    @Override
+    public void add(K key, V val){
         Leaf<K, V> newLeaf = new Leaf<>();
         newLeaf.list.addToEnd(key, val);
 
@@ -18,11 +19,11 @@ class MyTreeMap<K,V> {
             return;
         }
 
-        Leaf<K, V> lastLeaf = findLastLeaf(root, newLeaf);
+        Leaf<K, V> lastLeaf = findLastLeaf(newLeaf,key,val);
 
-        if (lastLeaf.compareTo(newLeaf.getKey()) == 0) {
-            lastLeaf.list.addToEnd(key, val);
-        }
+//        if (lastLeaf.compareTo(newLeaf.getKey()) == 0) {
+//            lastLeaf.list.addToEnd(key, val);
+//        }
         if (lastLeaf.compareTo(newLeaf.getKey()) < 0) {
             lastLeaf.right = newLeaf;
         }
@@ -32,29 +33,36 @@ class MyTreeMap<K,V> {
 
         size++;
     }
-    private Leaf<K,V> findLastLeaf(Leaf<K,V> oldLeaf, Leaf<K,V> newLeaf) {
-        Leaf<K,V> lastLeaf = oldLeaf;
-        int compare = oldLeaf.compareTo(newLeaf.getKey());
+    private Leaf<K,V> findLastLeaf(Leaf<K,V> newLeaf,K key, V val) {
+        Leaf<K,V> lastLeaf = root;
+        int lastElementHashKey;
+        int wantedElementHashKey = newLeaf.getKey().hashCode();
+        do {
+            lastElementHashKey = lastLeaf.getKey().hashCode();
 
-        if(compare < 0 && oldLeaf.right != null){
-            lastLeaf = findLastLeaf(oldLeaf.right, newLeaf);
-            return lastLeaf;
-        }
-        if(compare > 0 && oldLeaf.left != null){
-            lastLeaf = findLastLeaf(oldLeaf.left, newLeaf);
-            return lastLeaf;
-        }
-        if(compare == 0) {
-            return lastLeaf;
-        }
+            if (lastElementHashKey < wantedElementHashKey && lastLeaf.right != null){
+                lastLeaf=lastLeaf.right;
+                continue;
+            }
+            if (lastElementHashKey > wantedElementHashKey && lastLeaf.left != null){
+                lastLeaf=lastLeaf.left;
+                continue;
+            }
+            if (lastElementHashKey == wantedElementHashKey){
+                lastLeaf.list.addToEnd(key, val);
+                return lastLeaf;
+            }
 
-        return lastLeaf;
+            return lastLeaf;
+
+        }while (true);
     }
 
-    V get(K key){
+    @Override
+    public V get(K key){
         Leaf<K,V> eLeaf = new Leaf<>();
         eLeaf.list.addToEnd(key, null);
-        return search(root,eLeaf).list.getElement(key);
+        return search(root,eLeaf).list.getValue(key);
     }
     private Leaf<K,V> search(Leaf<K, V> leaf, Leaf<K, V> eLeaf){
         int compare = leaf.compareTo(eLeaf.getKey());

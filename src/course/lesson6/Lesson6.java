@@ -20,8 +20,8 @@ public class Lesson6 {
           ключа является индексом массива
         */
 
-        test.put("AaAaBB", "hashKeyCollision(1)");
         test.put("AaAaAa", "hashKeyCollision(2)");
+        test.put("AaAaBB", "hashKeyCollision(1)");
         consoleOut.println(test.get("AaAaBB"));
         consoleOut.println(test.get("AaAaAa"));
         /*

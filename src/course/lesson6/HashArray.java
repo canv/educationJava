@@ -18,11 +18,11 @@ public class HashArray<K,V> {
         }
     }
 
-    public String get(K key) {
+    public V get(K key) {
         int hash = key.hashCode()* 32 & SIZE;
         MyLinkedList extract = hashArray[hash];
         try {
-            return (String) extract.getElement(key);
+            return (V) extract.getValue(key);
         }catch (NullPointerException exc)
         {consoleOut.println("Key \"" + key + "\" not found");}
         return null;
