@@ -1,6 +1,6 @@
 package course.lesson6;
 
-class MyLinkedList<K,V> implements Comparable<K>{
+class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
     private Node<K,V> firstNode;
     private Node<K,V> lastNode;
     private int listSize = 0;
@@ -10,22 +10,23 @@ class MyLinkedList<K,V> implements Comparable<K>{
         firstNode = new Node<>(null,null, null,lastNode);
     }
 
-    void addToEnd(K key, V element) {
+    @Override
+    public void addToEnd(K key, V element) {
         Node<K,V> prev = lastNode;
         prev.setKey(key);
-        prev.setCurrentElement(element);
+        prev.setCurrentValue(element);
         lastNode = new Node<>(prev,null,null,null);
-        prev.setNextElement(lastNode);
+        prev.setNextNode(lastNode);
         listSize++;
     }
 
-    V getElement(K key) {
-        Node<K, V> target = firstNode.getNextElement();
-        for (int i = 0; i < listSize; i++) {
-            if (target != null && target.currentKey.equals(key)) continue;
-            target = target.getNextElement();
-        }
-        return target.getCurrentElement();
+    @Override
+    public V getValue(K key) {
+        Node<K, V> target = firstNode;
+        do{
+            target = target.getNextNode();
+        }while (target != lastNode && !target.currentKey.equals(key));
+        return target.getCurrentValue();
     }
 
     @Override
@@ -34,51 +35,51 @@ class MyLinkedList<K,V> implements Comparable<K>{
     }
 
     K getKey() {
-        return lastNode.prevElement.getKey();
+        return lastNode.prevNode.getKey();
     }
 
     V getLastNodeCurrentElement() {
-        return lastNode.getCurrentElement();
+        return lastNode.getCurrentValue();
     }
 
     private class Node<K,V>{
 
-        private Node<K,V> prevElement;
+        private Node<K,V> prevNode;
         private K currentKey;
-        private V currentElement;
-        private Node<K,V> nextElement;
+        private V currentValue;
+        private Node<K,V> nextNode;
 
-        private Node(Node<K,V> prevElement, K currentKey, V currentElement, Node<K,V> nextElement){
-            this.prevElement = prevElement;
+        private Node(Node<K,V> prevNode, K currentKey, V currentValue, Node<K,V> nextNode){
+            this.prevNode = prevNode;
             this.currentKey = currentKey;
-            this.currentElement = currentElement;
-            this.nextElement = nextElement;
+            this.currentValue = currentValue;
+            this.nextNode = nextNode;
         }
 
-        Node<K,V> getPrevElement() {
-            return prevElement;
+        Node<K,V> getPrevNode() {
+            return prevNode;
         }
-        V getCurrentElement() {
-            return currentElement;
+        V getCurrentValue() {
+            return currentValue;
         }
         K getKey() {
             return currentKey;
         }
-        Node<K,V> getNextElement() {
-            return nextElement;
+        Node<K,V> getNextNode() {
+            return nextNode;
         }
 
         void setKey(K key) {
             this.currentKey = key;
         }
-        void setPrevElement(Node<K,V> prevElement) {
-            this.prevElement = prevElement;
+        void setPrevNode(Node<K,V> prevNode) {
+            this.prevNode = prevNode;
         }
-        void setCurrentElement(V currentElement) {
-            this.currentElement = currentElement;
+        void setCurrentValue(V currentValue) {
+            this.currentValue = currentValue;
         }
-        void setNextElement(Node<K,V> nextElement) {
-            this.nextElement = nextElement;
+        void setNextNode(Node<K,V> nextNode) {
+            this.nextNode = nextNode;
         }
     }
 }
