@@ -11,6 +11,7 @@ public class Lesson6 {
         test.put("hashKeyOne", "HashMapOne");
         test.put("التجزئةمفتاحاثنين", "HashMapTwo");
         test.put("מפתחשני", "HashMapThree");
+        test.put("מפתחשני", "HashMapThree(Overwritten)");
         consoleOut.println(test.get("hashKeyOne"));
         consoleOut.println(test.get("التجزئةمفتاحاثنين"));
         consoleOut.println(test.get("מפתחשני"));
@@ -20,8 +21,8 @@ public class Lesson6 {
           ключа является индексом массива
         */
 
-        test.put("AaAaAa", "hashKeyCollision(2)");
-        test.put("AaAaBB", "hashKeyCollision(1)");
+        test.put("AaAaAa", "hashKeyCollision(2/2)");
+        test.put("AaAaBB", "hashKeyCollision(1/2)");
         consoleOut.println(test.get("AaAaBB"));
         consoleOut.println(test.get("AaAaAa"));
         /*
@@ -39,12 +40,13 @@ public class Lesson6 {
         treeTest.add("treeKeyOne", "TreeMapOne");
         treeTest.add("treeKeyTwo", "TreeMapTwo");
         treeTest.add("treeKeyThree", "TreeMapThree");
+        treeTest.add("treeKeyThree", "TreeMapThree(Overwritten)");
         consoleOut.println(treeTest.get("treeKeyOne"));
         consoleOut.println(treeTest.get("treeKeyTwo"));
         consoleOut.println(treeTest.get("treeKeyThree"));
 
-        treeTest.add("AaAaBB", "treeMapCollision(1)");
-        treeTest.add("AaAaAa", "treeMapCollision(2)");
+        treeTest.add("AaAaBB", "treeMapCollision(1/2)");
+        treeTest.add("AaAaAa", "treeMapCollision(2/2)");
         consoleOut.println(treeTest.get("AaAaBB"));
         consoleOut.println(treeTest.get("AaAaAa"));
     }

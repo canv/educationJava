@@ -1,9 +1,9 @@
 package course.lesson6;
 
-class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
+class MyLinkedList<K,V> implements MyList<K,V>{
     private Node<K,V> firstNode;
     private Node<K,V> lastNode;
-    private int listSize = 0;
+    int size = 0;
 
     MyLinkedList(){
         lastNode = new Node<>(firstNode,null, null,null);
@@ -11,17 +11,24 @@ class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
     }
 
     @Override
-    public void addToEnd(K key, V element) {
+    public void add(K key, V element) {
         Node<K,V> prev = lastNode;
         prev.setKey(key);
         prev.setCurrentValue(element);
         lastNode = new Node<>(prev,null,null,null);
         prev.setNextNode(lastNode);
-        listSize++;
     }
 
     @Override
-    public V getValue(K key) {
+    public void overwrite(K key, V element) {
+        Node<K,V> whoOverwrite = firstNode;
+        whoOverwrite.setKey(key);
+        whoOverwrite.setCurrentValue(element);
+        firstNode.setNextNode(whoOverwrite);
+    }
+
+    @Override
+    public V get(K key) {
         Node<K, V> target = firstNode;
         do{
             target = target.getNextNode();
@@ -29,16 +36,11 @@ class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
         return target.getCurrentValue();
     }
 
-    @Override
-    public int compareTo(K key) {
-        return this.getKey().hashCode() - key.hashCode();
-    }
-
     K getKey() {
         return lastNode.prevNode.getKey();
     }
 
-    V getLastNodeCurrentElement() {
+    V getLastNodeCurrentValue() {
         return lastNode.getCurrentValue();
     }
 
