@@ -11,6 +11,7 @@ public class Lesson6 {
         test.put("hashKeyOne", "HashMapOne");
         test.put("التجزئةمفتاحاثنين", "HashMapTwo");
         test.put("מפתחשני", "HashMapThree");
+        test.put("מפתחשני", "HashMapThree(Overwritten)");
         consoleOut.println(test.get("hashKeyOne"));
         consoleOut.println(test.get("التجزئةمفتاحاثنين"));
         consoleOut.println(test.get("מפתחשני"));
@@ -39,6 +40,7 @@ public class Lesson6 {
         treeTest.add("treeKeyOne", "TreeMapOne");
         treeTest.add("treeKeyTwo", "TreeMapTwo");
         treeTest.add("treeKeyThree", "TreeMapThree");
+        treeTest.add("treeKeyThree", "TreeMapThree(Overwritten)");
         consoleOut.println(treeTest.get("treeKeyOne"));
         consoleOut.println(treeTest.get("treeKeyTwo"));
         consoleOut.println(treeTest.get("treeKeyThree"));

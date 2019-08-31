@@ -66,7 +66,7 @@ public class QDemo {
 //
 //        System.out.println("smallQ's content: ");
 //        for (id = 0; id < 5; id++) {
-//            value = smallQ.getValue();
+//            value = smallQ.get();
 //            if (value != (char) 0) System.out.print(value);
 //        }
     }

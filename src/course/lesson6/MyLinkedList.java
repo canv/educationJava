@@ -3,6 +3,7 @@ package course.lesson6;
 class MyLinkedList<K,V> implements MyList<K,V>{
     private Node<K,V> firstNode;
     private Node<K,V> lastNode;
+    int size = 0;
 
     MyLinkedList(){
         lastNode = new Node<>(firstNode,null, null,null);
@@ -10,7 +11,7 @@ class MyLinkedList<K,V> implements MyList<K,V>{
     }
 
     @Override
-    public void addToEnd(K key, V element) {
+    public void add(K key, V element) {
         Node<K,V> prev = lastNode;
         prev.setKey(key);
         prev.setCurrentValue(element);
@@ -19,7 +20,15 @@ class MyLinkedList<K,V> implements MyList<K,V>{
     }
 
     @Override
-    public V getValue(K key) {
+    public void overwrite(K key, V element) {
+        Node<K,V> whoOverwrite = firstNode;
+        whoOverwrite.setKey(key);
+        whoOverwrite.setCurrentValue(element);
+        firstNode.setNextNode(whoOverwrite);
+    }
+
+    @Override
+    public V get(K key) {
         Node<K, V> target = firstNode;
         do{
             target = target.getNextNode();

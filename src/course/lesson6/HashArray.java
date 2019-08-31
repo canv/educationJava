@@ -11,10 +11,12 @@ public class HashArray<K,V> {
 
         if (hashArray[hash] == null) {
             MyLinkedList<K, V> entry = new MyLinkedList<>();
-            entry.addToEnd(key, val);
+            entry.add(key, val);
             hashArray[hash] = entry;
         } else {
-            hashArray[hash].addToEnd(key, val);
+            if(key.equals(hashArray[hash].getKey()))
+                hashArray[hash].overwrite(key, val);
+            else hashArray[hash].add(key, val);
         }
     }
 
@@ -22,7 +24,7 @@ public class HashArray<K,V> {
         int hash = key.hashCode()* 32 & STORAGE_SIZE;
         MyLinkedList extract = hashArray[hash];
         try {
-            return (V) extract.getValue(key);
+            return (V) extract.get(key);
         }catch (NullPointerException exc)
         {consoleOut.println("Key \"" + key + "\" not found");}
         return null;

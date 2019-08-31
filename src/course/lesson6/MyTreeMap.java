@@ -11,7 +11,7 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
     @Override
     public void add(K key, V val){
         Leaf<K, V> newLeaf = new Leaf<>();
-        newLeaf.listLeaf.addToEnd(key, val);
+        newLeaf.listLeaf.add(key, val);
 
         if (size == 0) {
             root = newLeaf;
@@ -30,7 +30,9 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
             lastLeaf.leftLeaf = newLeaf;
         }
         if (lastLeafKeyHashCode == newLeafKeyHashCode) {
-            lastLeaf.listLeaf.addToEnd(key, val);
+            if(lastLeaf.getKey().equals(newLeaf.getKey()))
+            lastLeaf.listLeaf.overwrite(key, val);
+            else lastLeaf.listLeaf.add(key, val);
         }
 
         size++;
@@ -39,10 +41,10 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
     @Override
     public V get(K key){
         Leaf<K,V> eLeaf = new Leaf<>();
-        eLeaf.listLeaf.addToEnd(key, null);
+        eLeaf.listLeaf.add(key, null);
         Leaf<K, V> lastLeaf = leafSearch(eLeaf);
 
-        return lastLeaf.listLeaf.getValue(key);
+        return lastLeaf.listLeaf.get(key);
     }
 
     private Leaf<K,V> leafSearch(Leaf<K, V> wantedLeaf){
