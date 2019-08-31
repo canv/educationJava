@@ -11,7 +11,7 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
     @Override
     public void add(K key, V val){
         Leaf<K, V> newLeaf = new Leaf<>();
-        newLeaf.list.addToEnd(key, val);
+        newLeaf.listLeaf.addToEnd(key, val);
 
         if (size == 0) {
             root = newLeaf;
@@ -19,93 +19,74 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
             return;
         }
 
-        Leaf<K, V> lastLeaf = findLastLeaf(newLeaf,key,val);
+        Leaf<K, V> lastLeaf = leafSearch(newLeaf);
+        int newLeafKeyHashCode = newLeaf.getKey().hashCode();
+        int lastLeafKeyHashCode = lastLeaf.getKey().hashCode();
 
-//        if (lastLeaf.compareTo(newLeaf.getKey()) == 0) {
-//            lastLeaf.list.addToEnd(key, val);
-//        }
-        if (lastLeaf.compareTo(newLeaf.getKey()) < 0) {
-            lastLeaf.right = newLeaf;
+        if (lastLeafKeyHashCode < newLeafKeyHashCode) {
+            lastLeaf.rightLeaf = newLeaf;
         }
-        if (lastLeaf.compareTo(newLeaf.getKey()) > 0) {
-            lastLeaf.left = newLeaf;
+        if (lastLeafKeyHashCode > newLeafKeyHashCode) {
+            lastLeaf.leftLeaf = newLeaf;
+        }
+        if (lastLeafKeyHashCode == newLeafKeyHashCode) {
+            lastLeaf.listLeaf.addToEnd(key, val);
         }
 
         size++;
-    }
-    private Leaf<K,V> findLastLeaf(Leaf<K,V> newLeaf,K key, V val) {
-        Leaf<K,V> lastLeaf = root;
-        int lastElementHashKey;
-        int wantedElementHashKey = newLeaf.getKey().hashCode();
-        do {
-            lastElementHashKey = lastLeaf.getKey().hashCode();
-
-            if (lastElementHashKey < wantedElementHashKey && lastLeaf.right != null){
-                lastLeaf=lastLeaf.right;
-                continue;
-            }
-            if (lastElementHashKey > wantedElementHashKey && lastLeaf.left != null){
-                lastLeaf=lastLeaf.left;
-                continue;
-            }
-            if (lastElementHashKey == wantedElementHashKey){
-                lastLeaf.list.addToEnd(key, val);
-                return lastLeaf;
-            }
-
-            return lastLeaf;
-
-        }while (true);
     }
 
     @Override
     public V get(K key){
         Leaf<K,V> eLeaf = new Leaf<>();
-        eLeaf.list.addToEnd(key, null);
-        return search(root,eLeaf).list.getValue(key);
-    }
-    private Leaf<K,V> search(Leaf<K, V> leaf, Leaf<K, V> eLeaf){
-        int compare = leaf.compareTo(eLeaf.getKey());
+        eLeaf.listLeaf.addToEnd(key, null);
+        Leaf<K, V> lastLeaf = leafSearch(eLeaf);
 
-        if(compare < 0 && leaf.right != null){
-            return search(leaf.right,eLeaf);}
-        if(compare > 0 && leaf.left != null)
-            return search(leaf.left,eLeaf);
-        if(compare == 0) {
-            return leaf;
+        return lastLeaf.listLeaf.getValue(key);
+    }
+
+    private Leaf<K,V> leafSearch(Leaf<K, V> wantedLeaf){
+
+        Leaf<K, V> lastLeaf = root;
+
+        int wantedLeafKeyHashCode = wantedLeaf.getKey().hashCode();
+        int lastLeafKeyHashCode;
+
+        while (true){
+            lastLeafKeyHashCode = lastLeaf.getKey().hashCode();
+            if(lastLeafKeyHashCode < wantedLeafKeyHashCode && lastLeaf.rightLeaf != null){
+                lastLeaf = lastLeaf.rightLeaf;
+                continue;
+            }
+            if(lastLeafKeyHashCode > wantedLeafKeyHashCode && lastLeaf.leftLeaf != null){
+                lastLeaf = lastLeaf.leftLeaf;
+                continue;
+            }
+            if(lastLeafKeyHashCode == wantedLeafKeyHashCode) {
+                return lastLeaf;
+            }
+            return lastLeaf;
         }
-
-        return null;
     }
 
 
-    class Leaf<K,V> implements Comparable<K>{
-        private Leaf<K,V> right;
-        private Leaf<K,V> left;
-        private MyLinkedList<K,V> list;
+    class Leaf<K,V>{
+        private Leaf<K,V> rightLeaf;
+        private Leaf<K,V> leftLeaf;
+        private MyLinkedList<K,V> listLeaf;
 
 
         Leaf() {
-            list = new MyLinkedList<>();
+            listLeaf = new MyLinkedList<>();
         }
 
         private K getKey() {
-            return list.getKey();
+            return listLeaf.getKey();
         }
-
-        @Override
-        public int compareTo(K key) {
-            return this.getKey().hashCode() - key.hashCode();
-        }
-
-//        @Override
-//        public int hashCode() {
-//            return key.hashCode() * 32 & Integer.MAX_VALUE;
-//        }
 
         @Override
         public String toString() {
-            return "TreeMap: " + list.getLastNodeCurrentElement() + "";
+            return "TreeMap: " + listLeaf.getLastNodeCurrentValue() + "";
         }
     }
 }

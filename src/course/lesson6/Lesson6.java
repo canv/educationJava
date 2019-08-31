@@ -20,8 +20,8 @@ public class Lesson6 {
           ключа является индексом массива
         */
 
-        test.put("AaAaAa", "hashKeyCollision(2)");
-        test.put("AaAaBB", "hashKeyCollision(1)");
+        test.put("AaAaAa", "hashKeyCollision(2/2)");
+        test.put("AaAaBB", "hashKeyCollision(1/2)");
         consoleOut.println(test.get("AaAaBB"));
         consoleOut.println(test.get("AaAaAa"));
         /*
@@ -43,8 +43,8 @@ public class Lesson6 {
         consoleOut.println(treeTest.get("treeKeyTwo"));
         consoleOut.println(treeTest.get("treeKeyThree"));
 
-        treeTest.add("AaAaBB", "treeMapCollision(1)");
-        treeTest.add("AaAaAa", "treeMapCollision(2)");
+        treeTest.add("AaAaBB", "treeMapCollision(1/2)");
+        treeTest.add("AaAaAa", "treeMapCollision(2/2)");
         consoleOut.println(treeTest.get("AaAaBB"));
         consoleOut.println(treeTest.get("AaAaAa"));
     }

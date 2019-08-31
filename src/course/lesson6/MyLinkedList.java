@@ -1,9 +1,8 @@
 package course.lesson6;
 
-class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
+class MyLinkedList<K,V> implements MyList<K,V>{
     private Node<K,V> firstNode;
     private Node<K,V> lastNode;
-    private int listSize = 0;
 
     MyLinkedList(){
         lastNode = new Node<>(firstNode,null, null,null);
@@ -17,7 +16,6 @@ class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
         prev.setCurrentValue(element);
         lastNode = new Node<>(prev,null,null,null);
         prev.setNextNode(lastNode);
-        listSize++;
     }
 
     @Override
@@ -29,16 +27,11 @@ class MyLinkedList<K,V> implements Comparable<K>, MyList<K,V>{
         return target.getCurrentValue();
     }
 
-    @Override
-    public int compareTo(K key) {
-        return this.getKey().hashCode() - key.hashCode();
-    }
-
     K getKey() {
         return lastNode.prevNode.getKey();
     }
 
-    V getLastNodeCurrentElement() {
+    V getLastNodeCurrentValue() {
         return lastNode.getCurrentValue();
     }
 
