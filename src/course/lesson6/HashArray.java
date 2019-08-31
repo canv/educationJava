@@ -3,11 +3,11 @@ package course.lesson6;
 import static packAlternative.AOutput.consoleOut;
 
 public class HashArray<K,V> {
-    private static final int STORAGE_SIZE = 1_000_000;
-    private MyLinkedList[] hashArray = new MyLinkedList[STORAGE_SIZE];
+    private static final int INITIAL_SIZE = 1_000_000;
+    private MyLinkedList[] hashArray = new MyLinkedList[INITIAL_SIZE];
 
     public void put(K key, V val) {
-        int hash = key.hashCode() * 32 & STORAGE_SIZE;
+        int hash = entryAddress(key);
 
         if (hashArray[hash] == null) {
             MyLinkedList<K, V> entry = new MyLinkedList<>();
@@ -21,12 +21,15 @@ public class HashArray<K,V> {
     }
 
     public V get(K key) {
-        int hash = key.hashCode()* 32 & STORAGE_SIZE;
-        MyLinkedList extract = hashArray[hash];
+        MyLinkedList extract = hashArray[entryAddress(key)];
         try {
             return (V) extract.get(key);
         }catch (NullPointerException exc)
         {consoleOut.println("Key \"" + key + "\" not found");}
         return null;
+    }
+
+    private int entryAddress(K key){
+        return key.hashCode() * 32 & INITIAL_SIZE;
     }
 }
