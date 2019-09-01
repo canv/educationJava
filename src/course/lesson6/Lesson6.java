@@ -6,6 +6,7 @@ public class Lesson6 {
     public static void main(String[] args) {
 
 // 1) Сделать свой HashMap
+
         HashArray<String, String> test = new HashArray<>();
 
         test.put("hashKeyOne", "HashMapOne");
@@ -49,5 +50,20 @@ public class Lesson6 {
         treeTest.add("AaAaAa", "treeMapCollision(2/2)");
         consoleOut.println(treeTest.get("AaAaBB"));
         consoleOut.println(treeTest.get("AaAaAa"));
+
+// 3) special test 01.09.2019 19:01
+
+        final HashArray<String, String> stringStringHashArray = new HashArray<>();
+        stringStringHashArray.put("AaAa","One");
+        stringStringHashArray.put("BBBB","Two");
+        stringStringHashArray.put("AaBB","Three");
+        stringStringHashArray.put("BBAa","Four");
+        stringStringHashArray.put("AaAa","Five");
+
+        System.out.println(stringStringHashArray.get("AaAa")); // Here should be Five!
+        System.out.println(stringStringHashArray.get("BBBB"));
+        System.out.println(stringStringHashArray.get("AaBB"));
+        System.out.println(stringStringHashArray.get("BBAa"));
+
     }
 }

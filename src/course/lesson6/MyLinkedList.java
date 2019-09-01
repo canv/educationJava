@@ -13,18 +13,25 @@ class MyLinkedList<K,V> implements MyList<K,V>{
     @Override
     public void add(K key, V element) {
         Node<K,V> prev = lastNode;
-        prev.setKey(key);
+        prev.setCurrentKey(key);
         prev.setCurrentValue(element);
         lastNode = new Node<>(prev,null,null,null);
         prev.setNextNode(lastNode);
     }
 
     @Override
-    public void overwrite(K key, V element) {
-        Node<K,V> whoOverwrite = firstNode;
-        whoOverwrite.setKey(key);
-        whoOverwrite.setCurrentValue(element);
-        firstNode.setNextNode(whoOverwrite);
+    public boolean coincidenceCorrection(K key, V val){
+        Node<K, V> isCoincidenceNode = firstNode;
+        do {
+            isCoincidenceNode = isCoincidenceNode.getNextNode();
+            if (isCoincidenceNode.currentKey == null) continue;
+            if (isCoincidenceNode.currentKey.equals(key)) {
+                isCoincidenceNode.setCurrentValue(val);
+
+                return true;
+            }
+        } while (isCoincidenceNode != lastNode);
+        return false;
     }
 
     @Override
@@ -37,7 +44,7 @@ class MyLinkedList<K,V> implements MyList<K,V>{
     }
 
     K getKey() {
-        return lastNode.prevNode.getKey();
+        return lastNode.prevNode.getCurrentKey();
     }
 
     V getLastNodeCurrentValue() {
@@ -64,14 +71,14 @@ class MyLinkedList<K,V> implements MyList<K,V>{
         V getCurrentValue() {
             return currentValue;
         }
-        K getKey() {
+        K getCurrentKey() {
             return currentKey;
         }
         Node<K,V> getNextNode() {
             return nextNode;
         }
 
-        void setKey(K key) {
+        void setCurrentKey(K key) {
             this.currentKey = key;
         }
         void setPrevNode(Node<K,V> prevNode) {

@@ -31,7 +31,7 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
         }
         if (lastLeafKeyHashCode == newLeafKeyHashCode) {
             if(lastLeaf.getKey().equals(newLeaf.getKey()))
-            lastLeaf.listLeaf.overwrite(key, val);
+            lastLeaf.listLeaf.coincidenceCorrection(key, val);
             else lastLeaf.listLeaf.add(key, val);
         }
 
