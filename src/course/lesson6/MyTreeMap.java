@@ -9,7 +9,7 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
     }
 
     @Override
-    public void add(K key, V val){
+    public void put(K key, V val){
         Leaf<K, V> newLeaf = new Leaf<>();
         newLeaf.listLeaf.add(key, val);
 
@@ -76,7 +76,6 @@ class MyTreeMap<K,V> implements MyMap<K,V> {
         private Leaf<K,V> rightLeaf;
         private Leaf<K,V> leftLeaf;
         private MyLinkedList<K,V> listLeaf;
-
 
         Leaf() {
             listLeaf = new MyLinkedList<>();
