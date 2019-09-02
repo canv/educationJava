@@ -38,16 +38,16 @@ public class Lesson6 {
 
         MyTreeMap<String, String> treeTest = new MyTreeMap<>();
 
-        treeTest.add("treeKeyOne", "TreeMapOne");
-        treeTest.add("treeKeyTwo", "TreeMapTwo");
-        treeTest.add("treeKeyThree", "TreeMapThree");
-        treeTest.add("treeKeyThree", "TreeMapThree(Overwritten)");
+        treeTest.put("treeKeyOne", "TreeMapOne");
+        treeTest.put("treeKeyTwo", "TreeMapTwo");
+        treeTest.put("treeKeyThree", "TreeMapThree");
+        treeTest.put("treeKeyThree", "TreeMapThree(Overwritten)");
         consoleOut.println(treeTest.get("treeKeyOne"));
         consoleOut.println(treeTest.get("treeKeyTwo"));
         consoleOut.println(treeTest.get("treeKeyThree"));
 
-        treeTest.add("AaAaBB", "treeMapCollision(1/2)");
-        treeTest.add("AaAaAa", "treeMapCollision(2/2)");
+        treeTest.put("AaAaBB", "treeMapCollision(1/2)");
+        treeTest.put("AaAaAa", "treeMapCollision(2/2)");
         consoleOut.println(treeTest.get("AaAaBB"));
         consoleOut.println(treeTest.get("AaAaAa"));
 
@@ -64,6 +64,5 @@ public class Lesson6 {
         System.out.println(stringStringHashArray.get("BBBB"));
         System.out.println(stringStringHashArray.get("AaBB"));
         System.out.println(stringStringHashArray.get("BBAa"));
-
     }
 }
