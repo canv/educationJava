@@ -42,15 +42,15 @@ public class Lesson9 {
 //      выстраивает rank'и в соответствии с иерархией.
 
         Person personOne = new Person.PersonBuilder()
-                .withMilitary(Profession.Corporal).build();
+                .withMilitary(Profession.CORPORAL).build();
         Person personTwo = new Person.PersonBuilder()
-                .withMilitary(Profession.Major).build();
+                .withMilitary(Profession.MAJOR).build();
         Person personThree = new Person.PersonBuilder()
-                .withMilitary(Profession.Officer).build();
+                .withMilitary(Profession.OFFICER).build();
         Person personFour = new Person.PersonBuilder()
-                .withMilitary(Profession.General).build();
+                .withMilitary(Profession.GENERAL).build();
         Person personFive = new Person.PersonBuilder()
-                .withMilitary(Profession.Private).build();
+                .withMilitary(Profession.PRIVATE).build();
 
         HashSet<Person> persons = new HashSet<>();
         persons.add(personOne);

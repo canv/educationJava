@@ -1,15 +1,15 @@
 package course.lesson9;
 
 enum Profession {
-    General(1),
-    Colonel(2),
-    Major(3),
-    Captain(4),
-    Lieutenant(5),
-    Officer(6),
-    Sergeant(7),
-    Corporal(8),
-    Private(9);
+    GENERAL(1),
+    COLONEL(2),
+    MAJOR(3),
+    CAPTAIN(4),
+    LIEUTENANT(5),
+    OFFICER(6),
+    SERGEANT(7),
+    CORPORAL(8),
+    PRIVATE(9);
 
     private int rank;
 
