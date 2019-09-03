@@ -19,15 +19,6 @@ class City {
         return roadsSetLength;
     }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "residentialSetArea = " + residentialSetArea +
-                ",\n\t recreationSetArea = " + recreationSetArea +
-                ",\n\t roadsSetLength = " + roadsSetLength +
-                '}';
-    }
-
     static class CityBuilder{
         private int recreationSetArea, roadsSetLength,residentialSetArea;
 

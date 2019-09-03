@@ -1,6 +1,6 @@
 package course.lesson9;
 
-import java.util.HashSet;
+import java.util.*;
 
 import static packAlternative.AOutput.consoleOut;
 
@@ -37,7 +37,7 @@ public class Lesson9 {
         consoleOut.println("Total Roads length: " +
                 totalCalculate(cities, "Roads"));
 
-// 2) Сделать HashSet Person со значением rank
+// 2) Сделать Коллекцию Person со значением rank
 //      Создать метод sort() (Как у Collections) Который
 //      выстраивает rank'и в соответствии с иерархией.
 
@@ -52,15 +52,22 @@ public class Lesson9 {
         Person personFive = new Person.PersonBuilder()
                 .withMilitary(Profession.PRIVATE).build();
 
-        HashSet<Person> persons = new HashSet<>();
+        ArrayList<Person> persons = new ArrayList<>();
         persons.add(personOne);
         persons.add(personTwo);
         persons.add(personThree);
         persons.add(personFour);
         persons.add(personFive);
+
+
+        persons = sortByRank(persons);
+
+        for (Person person : persons) {
+            consoleOut.println(person);
+        }
     }
 
-    private static int totalCalculate(HashSet<? extends City> cities, String who) {
+    private static int totalCalculate(HashSet<City> cities, String who) {
         int totalResult = 0;
         switch (who) {
             case "Recreation":
@@ -78,8 +85,35 @@ public class Lesson9 {
         }
         return -1;
     }
-    private static int totalCover(HashSet<? extends City> cities) {
+    private static int totalCover(HashSet<City> cities) {
         return totalCalculate(cities, "Recreation") +
                 totalCalculate(cities, "Residential");
+    }
+
+    private static ArrayList<Person> sortByRank(ArrayList<Person> persons){
+
+        Person[] personsArr = new Person[persons.size()];
+        for (int i = 0; i < personsArr.length; i++) {
+            personsArr[i] = persons.get(i);
+        }
+
+        int actualIndex, sortIndex;
+        Person tempVal;
+        int collectionSize = persons.size();
+        for(actualIndex = 1; actualIndex < collectionSize; actualIndex++){
+            for (sortIndex = collectionSize-1; sortIndex >= actualIndex; sortIndex--){
+                if(personsArr[sortIndex-1].getMilitary().getRank()
+                        > personsArr[sortIndex].getMilitary().getRank()){
+                    tempVal = personsArr[sortIndex-1];
+                    personsArr[sortIndex-1]=personsArr[sortIndex];
+                    personsArr[sortIndex] = tempVal;
+                }
+            }
+        }
+
+        ArrayList<Person> sortedPersons = new ArrayList<>();
+        Collections.addAll(sortedPersons, personsArr);
+
+        return sortedPersons;
     }
 }
