@@ -90,7 +90,7 @@ public class Lesson9 {
                 totalCalculate(cities, "Residential");
     }
 
-    private static ArrayList<Person> sortByRank(ArrayList<Person> persons){
+    private static ArrayList<Person> sortByRank(ArrayList<Person> persons) {
 
         Person[] personsArr = new Person[persons.size()];
         for (int i = 0; i < personsArr.length; i++) {
@@ -99,13 +99,12 @@ public class Lesson9 {
 
         int actualIndex, sortIndex;
         Person tempVal;
-        int collectionSize = persons.size();
-        for(actualIndex = 1; actualIndex < collectionSize; actualIndex++){
-            for (sortIndex = collectionSize-1; sortIndex >= actualIndex; sortIndex--){
-                if(personsArr[sortIndex-1].getMilitary().getRank()
-                        > personsArr[sortIndex].getMilitary().getRank()){
-                    tempVal = personsArr[sortIndex-1];
-                    personsArr[sortIndex-1]=personsArr[sortIndex];
+        for (actualIndex = 1; actualIndex < personsArr.length; actualIndex++) {
+            for (sortIndex = personsArr.length - 1; sortIndex >= actualIndex; sortIndex--) {
+                if (personsArr[sortIndex - 1].getMilitary().getRank()
+                        > personsArr[sortIndex].getMilitary().getRank()) {
+                    tempVal = personsArr[sortIndex - 1];
+                    personsArr[sortIndex - 1] = personsArr[sortIndex];
                     personsArr[sortIndex] = tempVal;
                 }
             }
