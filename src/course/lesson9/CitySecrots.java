@@ -1,5 +1,11 @@
 package course.lesson9;
 
+interface CitySet {
+    int getLength();
+    int getWidth();
+    Damage getDamage();
+}
+
 abstract class CitySectors implements CitySet{
     private int id;
     private String name;
