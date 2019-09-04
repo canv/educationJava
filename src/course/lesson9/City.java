@@ -1,45 +1,62 @@
 package course.lesson9;
 
-class City {
-    private final int recreationSetArea, roadsSetLength, residentialSetArea;
+import java.util.HashSet;
 
-    private City(int residentialSetArea, int recreationSetArea, int roadsSetLength) {
-        this.residentialSetArea = residentialSetArea;
-        this.recreationSetArea = recreationSetArea;
-        this.roadsSetLength = roadsSetLength;
+class City{
+    private HashSet<Park> parks;
+    private HashSet<Street> streets;
+    private HashSet<LivingDistrict> livingDistricts;
+
+    City() {
+        this.parks = new HashSet<>();
+        this.streets = new HashSet<>();
+        this.livingDistricts = new HashSet<>();
     }
 
-    int getResidentialSetArea() {
-        return residentialSetArea;
+    HashSet<Park> getParks() {
+        return parks;
     }
-    int getRecreationSetArea() {
-        return recreationSetArea;
+    HashSet<Street> getStreets() {
+        return streets;
     }
-    int getRoadsSetLength() {
-        return roadsSetLength;
+    HashSet<LivingDistrict> getLivingDistricts() {
+        return livingDistricts;
     }
 
-    static class CityBuilder{
-        private int recreationSetArea, roadsSetLength,residentialSetArea;
+    void addPark(Park park) {
+        parks.add(park);
+    }
+    void addStreet(Street street) {
+        streets.add(street);
+    }
+    void addLivingDistrict(LivingDistrict livingDistrict) {
+        livingDistricts.add(livingDistrict);
+    }
+}
 
-        City build(){
-            City city = new City(residentialSetArea,recreationSetArea,roadsSetLength);
-            residentialSetArea = 0;
-            recreationSetArea = 0;
-            roadsSetLength = 0;
-            return city;
-        }
-        CityBuilder withResidentialSetArea(int streetsSet) {
-            this.residentialSetArea = streetsSet;
-            return this;
-        }
-        CityBuilder withRecreationSetArea(int recreationAreasSet) {
-            this.recreationSetArea = recreationAreasSet;
-            return this;
-        }
-        CityBuilder withRoadsSetLength(int roadsSet) {
-            this.roadsSetLength = roadsSet;
-            return this;
-        }
+final class CityCalculation{
+
+    static int totalSectorArea(HashSet<? extends CitySet> points){
+        int totalResult = 0;
+        for (CitySet cityPoint : points)
+            totalResult += (cityPoint.getLength()*cityPoint.getWidth());
+        return totalResult;
+    }
+    static int streetsLength(HashSet<Street> streets) {
+        int totalResult = 0;
+        for (Street street : streets)
+            totalResult += street.getLength();
+        return totalResult;
+    }
+    static int totalSectorDamageArea(HashSet<? extends CitySet> points){
+        int totalResult = 0;
+        for (CitySet cityPoint : points)
+            totalResult += (cityPoint.getDamage().getLength()*cityPoint.getDamage().getWidth());
+        return totalResult;
+    }
+    static int totalUsableArea(City city) {
+        return (totalSectorArea(city.getParks())-totalSectorDamageArea(city.getParks()))+
+                (totalSectorArea(city.getStreets())-totalSectorDamageArea(city.getStreets()))+
+                (totalSectorArea(city.getLivingDistricts())-totalSectorDamageArea(city.getLivingDistricts()));
     }
 }
