@@ -1,11 +1,12 @@
 package course.lesson9;
 
 import java.util.HashSet;
+import java.util.Set;
 
 class City{
-    private HashSet<Park> parks;
-    private HashSet<Street> streets;
-    private HashSet<LivingDistrict> livingDistricts;
+    private Set<Park> parks;
+    private Set<Street> streets;
+    private Set<LivingDistrict> livingDistricts;
 
     City() {
         this.parks = new HashSet<>();
@@ -13,50 +14,28 @@ class City{
         this.livingDistricts = new HashSet<>();
     }
 
-    HashSet<Park> getParks() {
+    Set<Park> getParks() {
         return parks;
     }
-    HashSet<Street> getStreets() {
+    Set<Street> getStreets() {
         return streets;
     }
-    HashSet<LivingDistrict> getLivingDistricts() {
+    Set<LivingDistrict> getLivingDistricts() {
         return livingDistricts;
     }
 
-    void addPark(Park park) {
+    void addSector(Park park){
         parks.add(park);
     }
-    void addStreet(Street street) {
+    void addSector(Street street){
         streets.add(street);
     }
-    void addLivingDistrict(LivingDistrict livingDistrict) {
+    void addSector(LivingDistrict livingDistrict){
         livingDistricts.add(livingDistrict);
     }
-}
-
-final class CityCalculation{
-
-    static int totalSectorArea(HashSet<? extends CitySet> points){
-        int totalResult = 0;
-        for (CitySet cityPoint : points)
-            totalResult += (cityPoint.getLength()*cityPoint.getWidth());
-        return totalResult;
-    }
-    static int streetsLength(HashSet<Street> streets) {
-        int totalResult = 0;
-        for (Street street : streets)
-            totalResult += street.getLength();
-        return totalResult;
-    }
-    static int totalSectorDamageArea(HashSet<? extends CitySet> points){
-        int totalResult = 0;
-        for (CitySet cityPoint : points)
-            totalResult += (cityPoint.getDamage().getLength()*cityPoint.getDamage().getWidth());
-        return totalResult;
-    }
-    static int totalUsableArea(City city) {
-        return (totalSectorArea(city.getParks())-totalSectorDamageArea(city.getParks()))+
-                (totalSectorArea(city.getStreets())-totalSectorDamageArea(city.getStreets()))+
-                (totalSectorArea(city.getLivingDistricts())-totalSectorDamageArea(city.getLivingDistricts()));
+    static void addDamage(Set<? extends CitySet> points, String name, int length, int width){
+        for (CitySet point : points) {
+            if (name.equals(point.getName())) point.addDamage(length,width);
+        }
     }
 }

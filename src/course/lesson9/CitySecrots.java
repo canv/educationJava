@@ -1,36 +1,24 @@
 package course.lesson9;
 
-interface CitySet {
-    int getLength();
-    int getWidth();
-    Damage getDamage();
-}
+import java.util.HashSet;
+import java.util.Set;
 
 abstract class CitySectors implements CitySet{
-    private int id;
     private String name;
     private int length;
     private int width;
-    private Damage damage;
+    private Set<Damage> damage;
 
-    CitySectors(String name, int length, int width, Damage damage) {
-        this.id = hashCode() & Integer.MAX_VALUE;
+    CitySectors(String name, int length, int width) {
         this.name = name;
         this.length = length;
         this.width = width;
-        this.damage = damage;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public String getName() {
-        return name;
+        this.damage = new HashSet<>();
     }
 
     @Override
-    public Damage getDamage() {
-        return damage;
+    public String getName() {
+        return name;
     }
     @Override
     public int getLength() {
@@ -40,21 +28,30 @@ abstract class CitySectors implements CitySet{
     public int getWidth() {
         return width;
     }
+    @Override
+    public Set<Damage> getDamage() {
+
+        return damage;
+    }
+    @Override
+    public void addDamage(int length, int width){
+        damage.add(new Damage(length,width));
+    }
 }
 
 class Park extends CitySectors {
-    Park(String name, int length, int width, Damage damage) {
-        super(name, length, width, damage);
+    Park(String name, int length, int width) {
+        super(name, length, width);
     }
 }
 class Street extends CitySectors {
-    Street(String name, int length, int width, Damage damage) {
-        super(name, length, width, damage);
+    Street(String name, int length, int width) {
+        super(name, length, width);
     }
 }
 class LivingDistrict extends CitySectors {
-    LivingDistrict(String name, int length, int width, Damage damage) {
-        super(name, length, width, damage);
+    LivingDistrict(String name, int length, int width) {
+        super(name, length, width);
     }
 }
 
