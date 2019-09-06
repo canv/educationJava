@@ -150,3 +150,6 @@ pack17ch.Introduction to JavaFX
 
     class JavaFXEventDemo
         Button and Event demo
+
+    class CheckboxDemo
+        demo CHeckboxes in JavaFX
