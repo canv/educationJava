@@ -1,11 +1,10 @@
-#Park
-May 123 221.
-Damage
-5 2.
-Damage
-2 14.
-
-#Park
-Lenin 23 22.
-Damage
-2 3.
+#Park May 123 221.
+Damage 5 2.
+-
+#Street Cosmonauts 3234 700.
+Damage 2034 56.
+-
+#LivingDistrict GGR7 664 600.
+Damage 3 77.
+Damage 34 43.
+-
