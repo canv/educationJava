@@ -28,8 +28,8 @@ final class CityCalculation{
         return totalResult;
     }
     static int totalUsableArea(City city) {
-        return (totalSectorArea(city.getParks())-totalSectorDamageArea(city.getParks()))+
-                (totalSectorArea(city.getStreets())-totalSectorDamageArea(city.getStreets()))+
-                (totalSectorArea(city.getLivingDistricts())-totalSectorDamageArea(city.getLivingDistricts()));
+        return (totalSectorArea(city.getParks()) - totalSectorDamageArea(city.getParks())) +
+                (totalSectorArea(city.getStreets()) - totalSectorDamageArea(city.getStreets())) +
+                (totalSectorArea(city.getLivingDistricts()) - totalSectorDamageArea(city.getLivingDistricts()));
     }
 }

@@ -39,14 +39,14 @@ public class Lesson9 {
         addDamage(city17.getStreets(),"Farmers",1789,77);
 
 
-        city17.addSector(new LivingDistrict("PSO-43",234,112));
-        addDamage(city17.getLivingDistricts(),"PSO-43",44,56);
+        city17.addSector(new LivingDistrict("PSO43",234,112));
+        addDamage(city17.getLivingDistricts(),"PSO43",44,56);
 
-        city17.addSector(new LivingDistrict("RS-1",664,398));
-        addDamage(city17.getLivingDistricts(),"RS-1",34,43);
+        city17.addSector(new LivingDistrict("RS1",664,398));
+        addDamage(city17.getLivingDistricts(),"RS1",34,43);
 
-        city17.addSector(new LivingDistrict("GG-R7",664,600));
-        addDamage(city17.getLivingDistricts(),"GG-R7",3,77);
+        city17.addSector(new LivingDistrict("GGR7",664,600));
+        addDamage(city17.getLivingDistricts(),"GGR7",3,77);
 
 
         consoleOut.println("Total area of all city parks - " +
