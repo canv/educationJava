@@ -40,21 +40,25 @@ public class CheckboxDemo extends Application {
         cbNotebook = new CheckBox("Notebook");
 
         cbSmartphone.setOnAction(event -> {
-            if(cbSmartphone.isSelected())response.setText("Smartphone was selected");
+            if(cbSmartphone.isIndeterminate()) response.setText("Smartphone is indeterminate");
+            else if(cbSmartphone.isSelected())response.setText("Smartphone was selected");
             else response.setText("Smartphone was cleared");
             showAll();
         });
         cbTablet.setOnAction(event -> {
-            if(cbTablet.isSelected())response.setText("Tablet was selected");
+            if(cbTablet.isIndeterminate()) response.setText("Tablet is indeterminate");
+            else if(cbTablet.isSelected())response.setText("Tablet was selected");
             else response.setText("Tablet was cleared");
             showAll();
         });
         cbDesktop.setOnAction(event -> {
+            if(cbDesktop.isIndeterminate()) response.setText("Desktop is indeterminate");
             if(cbDesktop.isSelected())response.setText("Desktop was selected");
             else response.setText("Desktop was cleared");
             showAll();
         });
         cbNotebook.setOnAction(event -> {
+            if(cbNotebook.isIndeterminate()) response.setText("Notebook is indeterminate");
             if(cbNotebook.isSelected())response.setText("Notebook was selected");
             else response.setText("Notebook was cleared");
             showAll();
