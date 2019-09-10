@@ -153,3 +153,6 @@ pack17ch.Introduction to JavaFX
 
     class CheckboxDemo
         demo CHeckboxes in JavaFX
+
+    class ListViewDemo
+        JavaFX ListView demo
