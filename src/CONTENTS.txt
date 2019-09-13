@@ -159,3 +159,6 @@ pack17ch.Introduction to JavaFX
 
     class TextFieldDemo
         Text fied demonstration
+
+    class EffectsAndTransformsDemo
+        Some JavaFX effects demo
