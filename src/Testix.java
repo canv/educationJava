@@ -2,57 +2,54 @@ public class Testix {
 
     public static void main(String[] args) {
         Chock chock = new Chock();
-        chock.calc(4, 1);
+        chock.bugsThinking(2147483642, 214748364);
     }
 }
 
 class Chock {
-    void calc(int stones, long bugs) {
-        if (stones <= bugs) return;
-        long[] stonesArr = new long[stones];
-        long nicePlace = stonesArr.length;
-        long bugCounter = 1;
 
-        long writeSpace = stonesArr.length % 2;
-        long leftSpace = stonesArr.length - writeSpace;
+    void bugsThinking(int stones, int bugs) {
+        if (stones < bugs) return;
+        if (stones == bugs)
+            System.out.println("All stones are busy");
 
-        for (int i = 0; i < stonesArr.length; i++) {
+        boolean[] stonesArr = new boolean[stones + 2];
+        stonesArr[0] = true;
+        stonesArr[stonesArr.length - 1] = true;
 
-
-        }
-
-    }
-
-    static void qsort(int[] items) {
-        qs(items, 0, items.length - 1);
-    }
-
-    private static void qs(int[] items, int left, int right) {
-
-        int i = left;
-        int j = right;
-        int pivot, TEMP;
-
-        pivot = items[(left + right) / 2];
+        int tryLeftBound = 0;
+        int tryRightBound = 0;
+        int currentLeftBound;
+        int currentRightBound;
+        int bugCounter = 1;
+        int putBug;
 
         do {
+            currentLeftBound = currentRightBound = 0;
+            for (int i = 1; i < stonesArr.length; i++) {
 
-            while ((items[i] < pivot) && (i < right)) i++;
-            while ((pivot < items[j] && (j > left))) j--;
+                if (!stonesArr[i]) {
+                    if (tryLeftBound == 0) tryLeftBound = i;
+                    tryRightBound = i;
 
-            if (i <= j) {
-                TEMP = items[i];
-                items[i] = items[j];
-                items[j] = TEMP;
-                i++;
-                j--;
+                } else if (tryRightBound - tryLeftBound
+                        > currentRightBound - currentLeftBound) {
+
+                    currentLeftBound = tryLeftBound;
+                    currentRightBound = tryRightBound;
+
+                    tryLeftBound = 0;
+                    tryRightBound = 0;
+
+                } else tryLeftBound = tryRightBound = 0;
             }
+            putBug = ((currentRightBound - (currentLeftBound - 1)) / 2) + currentLeftBound;
+            stonesArr[putBug] = true;
+            bugCounter++;
+        } while (bugCounter <= bugs);
 
-        } while (i <= j);
-
-        if (left < j)
-            qs(items, left, j);
-        if (i < right)
-            qs(items, i, right);
+        int rightStones = currentRightBound-putBug;
+        int leftStones = putBug-currentLeftBound;
+        System.out.println(rightStones + ", " + leftStones);
     }
 }
